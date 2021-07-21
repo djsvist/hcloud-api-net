@@ -1,8 +1,5 @@
 ﻿using hcloud_api.Models.Objects.ServerTypes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace hcloud_api.Models.Objects
 {
@@ -42,7 +39,7 @@ namespace hcloud_api.Models.Objects
         /// True if Server type is deprecated
         /// </summary>
         [JsonProperty("deprecated")]
-        public bool Deprecated { get; set; }
+        public bool? Deprecated { get; set; }
 
         /// <summary>
         /// Disk size a Server of this type will have in GB

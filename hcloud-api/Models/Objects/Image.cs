@@ -72,7 +72,7 @@ namespace hcloud_api.Models.Objects
         /// For snapshot Images this is the value relevant for calculating costs for the Image.
         /// </summary>
         [JsonProperty("image_size")]
-        public float ImageSize { get; set; }
+        public float? ImageSize { get; set; }
 
         /// <summary>
         /// User-defined labels

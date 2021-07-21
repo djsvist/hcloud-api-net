@@ -2,6 +2,7 @@
 using hcloud_api.Models.Responses;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace hcloud_api.Extensions
@@ -11,7 +12,7 @@ namespace hcloud_api.Extensions
         public static async Task<T> PostJsonAsync<T>(this HttpClient client, string requestUri, object data) where T : IResponse
         {
             var content = new StringContent(
-                JsonConvert.SerializeObject(data));
+                JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync(requestUri, content);
             var responseStr = await response.Content.ReadAsStringAsync();
@@ -22,7 +23,7 @@ namespace hcloud_api.Extensions
         public static async Task<T> PutJsonAsync<T>(this HttpClient client, string requestUri, object data) where T : IResponse
         {
             var content = new StringContent(
-                JsonConvert.SerializeObject(data));
+                JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
 
             var response = await client.PutAsync(requestUri, content);
             var responseStr = await response.Content.ReadAsStringAsync();
@@ -48,7 +49,7 @@ namespace hcloud_api.Extensions
 
         private static T DeserializeAndThrow<T>(string json) where T : IResponse
         {
-            var result = JsonConvert.DeserializeObject<T>(json);
+            var result = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate });
 
             if (result.Error != null)
                 throw new HCloudException()
