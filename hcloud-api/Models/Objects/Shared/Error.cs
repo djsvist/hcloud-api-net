@@ -15,5 +15,11 @@ namespace hcloud_api.Models.Objects.Shared
         /// </summary>
         [JsonProperty("message", Required = Required.Always)]
         public string Message { get; set; }
+
+        /// <summary>
+        /// An object providing for details on the error (schema depends on code)
+        /// </summary>
+        [JsonProperty("details")]
+        public dynamic Details { get; set; }
     }
 }
