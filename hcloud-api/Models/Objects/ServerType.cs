@@ -1,4 +1,5 @@
 ﻿using hcloud_api.Models.Objects.ServerTypes;
+using hcloud_api.Models.Objects.Shared;
 using Newtonsoft.Json;
 
 namespace hcloud_api.Models.Objects
