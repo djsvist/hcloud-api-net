@@ -1,7 +1,9 @@
 ﻿using hcloud_api.Models.Objects;
+using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses.Datacenters;
+using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.Servers;
@@ -71,6 +73,22 @@ namespace hcloud_api.Services
         /// <param name="name">Can be used to filter Datacenters by their name. The response will only contain the Datacenter matching the specified name. When the name does not match the Datacenter name format, an invalid_input error is returned.</param>
         /// <returns></returns>
         Task<DatacentersResponse> GetDatacenters(string name = null);
+
+
+        /// <summary>
+        /// Gets a specific Load Balancer type object.
+        /// </summary>
+        /// <param name="id">ID of Load Balancer type</param>
+        /// <returns></returns>
+        Task<LoadBalancerType> GetLoadBalancerType(int id);
+
+        /// <summary>
+        /// Can be used to filter Load Balancer types by their name. 
+        /// The response will only contain the Load Balancer type matching the specified name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<IEnumerable<LoadBalancerType>> GetLoadBalancerTypes(string name = null);
 
 
         /// <summary>
@@ -189,5 +207,65 @@ namespace hcloud_api.Services
         /// <param name="request"></param>
         /// <returns></returns>
         Task<Server> UpdateServer(int id, UpdateServerRequest request);
+
+
+        /// <summary>
+        /// Returns a specific Image object.
+        /// </summary>
+        /// <param name="id">ID of the Image</param>
+        /// <returns></returns>
+        Task<Image> GetImage(int id);
+
+        /// <summary>
+        /// Returns all Image objects. You can select specific Image types only and sort the results by using parameters.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="sort"></param>
+        /// <param name="type"></param>
+        /// <param name="status">The response will only contain Images matching the status.</param>
+        /// <param name="boundTo">Server ID linked to the Image. Only available for Images of type <b>backup</b></param>
+        /// <param name="includeDeprecated"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetImagesResponse> GetImages(string name = null, 
+            string labelSelector = null, 
+            ImageSortQuery sort = null, 
+            ImageTypeQuery type = null, 
+            ImageStatusQuery status = null, 
+            string boundTo = null,
+            bool? includeDeprecated = null,
+            int? page = null, 
+            int? perPage = null);
+
+        /// <summary>
+        /// Deletes an Image. Only Images of type <b>snapshot</b> and <b>backup</b> can be deleted.
+        /// </summary>
+        /// <param name="id">ID of the Image</param>
+        /// <returns></returns>
+        Task<Image> DeleteImage(int id);
+
+        /// <summary>
+        /// Deletes an Image. Only Images of type <b>snapshot</b> and <b>backup</b> can be deleted.
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        Task<Image> DeleteImage(Image image);
+
+        /// <summary>
+        /// Updates the Image. You may change the description, convert a Backup Image to a Snapshot Image or change the Image labels. Only Images of type <b>snapshot</b> and <b>backup</b> can be updated.
+        /// </summary>
+        /// <param name="id">ID of the Image</param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<Image> UpdateImage(int id, UpdateImageRequest request);
+
+        /// <summary>
+        /// Updates the Image. You may change the description, convert a Backup Image to a Snapshot Image or change the Image labels. Only Images of type <b>snapshot</b> and <b>backup</b> can be updated.
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        Task<Image> UpdateImage(Image image);
     }
 }

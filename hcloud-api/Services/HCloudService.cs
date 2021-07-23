@@ -1,11 +1,14 @@
 ﻿using hcloud_api.Extensions;
 using hcloud_api.Models.Objects;
+using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Datacenters;
+using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
+using hcloud_api.Models.Responses.LoadBalancerTypes;
 using hcloud_api.Models.Responses.Locations;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
@@ -20,11 +23,13 @@ namespace hcloud_api.Services
     public class HCloudService : IHCloudService
     {
         private const string LBPath = "load_balancers";
+        private const string LBTypePath = "load_balancer_types";
         private const string DCPath = "datacenters";
         private const string ISOPath = "isos";
         private const string LocationPath = "locations";
         private const string STPath = "server_types";
         private const string ServerPath = "servers";
+        private const string ImagePath = "images";
 
         private readonly HttpClient client;
 
@@ -141,6 +146,22 @@ namespace hcloud_api.Services
             return result.LoadBalancer;
         }
 
+        public async Task<LoadBalancerType> GetLoadBalancerType(int id)
+        {
+            var result = await client.GetJsonAsync<GetLoadBalancerTypeResponse>(Append(LBTypePath, id));
+            return result.LoadBalancerType;
+        }
+
+        public async Task<IEnumerable<LoadBalancerType>> GetLoadBalancerTypes(string name = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+
+            var result = await client.GetJsonAsync<GetLoadBalancerTypesResponse>(Append(LBTypePath, query));
+            return result.LoadBalancerTypes;
+
+        }
+
         public async Task<CreateServerResponse> CreateServer(CreateServerRequest template)
         {
             return await client.PostJsonAsync<CreateServerResponse>(ServerPath, template);
@@ -189,6 +210,54 @@ namespace hcloud_api.Services
         {
             var result = await client.PutJsonAsync<ServerResponse>(Append(ServerPath, id), request);
             return result.Server;
+        }
+
+        public async Task<Image> GetImage(int id)
+        {
+            var result = await client.GetJsonAsync<ImageResponse>(Append(ImagePath, id));
+            return result.Image;
+        }
+
+        public async Task<GetImagesResponse> GetImages(string name = null, string labelSelector = null, ImageSortQuery sort = null, ImageTypeQuery type = null, ImageStatusQuery status = null, string boundTo = null, bool? includeDeprecated = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("status", status);
+            query.AddNotNull("type", type);
+            query.AddNotNull("bound_to", boundTo);
+            query.AddNotNull("include_deprecated", includeDeprecated);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetImagesResponse>(ImagePath);
+        }
+
+        public async Task<Image> DeleteImage(int id)
+        {
+            var result = await client.DeleteJsonAsync<ImageResponse>(Append(ImagePath, id));
+            return result.Image;
+        }
+
+        public async Task<Image> DeleteImage(Image image)
+        {
+            return await DeleteImage(image.Id);
+        }
+
+        public async Task<Image> UpdateImage(int id, UpdateImageRequest request)
+        {
+            var result = await client.PutJsonAsync<ImageResponse>(Append(ImagePath, id), request);
+            return result.Image;
+        }
+
+        public async Task<Image> UpdateImage(Image image)
+        {
+            return await UpdateImage(image.Id, new UpdateImageRequest
+            {
+                Description = image.Description,
+                Labels = image.Labels
+            });
         }
 
         private static string Replace(string path, int id) => path.Replace("{id}", id.ToString());
