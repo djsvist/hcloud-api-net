@@ -1,16 +1,14 @@
-﻿using hcloud_api.Services.Impl;
-using hcloud_api.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using hcloud_api.Services;
 using System;
 using System.Net.Http.Headers;
 
-namespace hcloud_api
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class AspNetExtensions
     {
         public static IServiceCollection UseHCloudAPI(this IServiceCollection services, string token, string baseUri = "https://api.hetzner.cloud/v1/")
         {
-            services.AddHttpClient<IServerService, ServerService>(c =>
+            services.AddHttpClient<IHCloudService, HCloudService>(c =>
             {
                 c.BaseAddress = new Uri(baseUri);
                 c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

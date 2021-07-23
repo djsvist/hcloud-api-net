@@ -1,6 +1,7 @@
 ﻿using hcloud_api.Exceptions;
 using hcloud_api.Models.Responses;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,13 +52,19 @@ namespace hcloud_api.Extensions
         {
             var result = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate });
 
-            if (result.Error != null)
+            if (result?.Error != null)
                 throw new HCloudException()
                 {
                     Error = result.Error
                 };
 
             return result;
+        }
+
+        public static void AddNotNull(this Dictionary<string, object> dictionary, string key, object value)
+        {
+            if (value != null)
+                dictionary.Add(key, value);
         }
     }
 }

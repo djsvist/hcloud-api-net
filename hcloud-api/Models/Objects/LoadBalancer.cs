@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace hcloud_api.Models.Objects
 {
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class LoadBalancer
     {
         /// <summary>
@@ -39,13 +38,13 @@ namespace hcloud_api.Models.Objects
         /// Free Traffic for the current billing period in bytes
         /// </summary>
         [JsonProperty("included_traffic")]
-        public int IncludedTraffic { get; set; }
+        public long IncludedTraffic { get; set; }
 
         /// <summary>
         /// Inbound Traffic for the current billing period in bytes
         /// </summary>
         [JsonProperty("ingoing_traffic")]
-        public int? InboundTraffic { get; set; }
+        public long? InboundTraffic { get; set; }
 
         /// <summary>
         /// User-defined labels
@@ -87,12 +86,12 @@ namespace hcloud_api.Models.Objects
         /// Array of services
         /// </summary>
         [JsonProperty("services")]
-        public IList<LoadBalancerService> Services { get; set; }
+        public LoadBalancerService[] Services { get; set; }
 
         /// <summary>
         /// List of targets that belong to this Load Balancer
         /// </summary>
         [JsonProperty("targets")]
-        public IList<LoadBalancerTarget> Targets { get; set; }
+        public LoadBalancerTarget[] Targets { get; set; }
     }
 }

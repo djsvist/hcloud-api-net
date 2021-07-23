@@ -7,6 +7,7 @@ namespace hcloud_api.Models.Objects.LoadBalancers.Services
     {
         /// <summary>
         /// Port the Load Balancer will balance to
+        /// <br><b>Required field</b></br>
         /// </summary>
         [JsonProperty("destination_port")]
         public int DestinationPort { get; set; }

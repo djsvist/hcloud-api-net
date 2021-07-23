@@ -1,12 +1,11 @@
-﻿using hcloud_api.Models.Objects;
-using hcloud_api.Models.Objects.Shared;
+﻿using hcloud_api.Models.Objects.Shared;
 using Newtonsoft.Json;
 
 namespace hcloud_api.Models.Responses
 {
-    public abstract class IResponse
+    public class IResponse
     {
-        [JsonProperty("next_actions")]
+        [JsonProperty("error")]
         public Error Error { get; set; }
     }
 }
