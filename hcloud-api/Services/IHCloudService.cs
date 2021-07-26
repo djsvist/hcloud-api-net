@@ -1,10 +1,12 @@
 ﻿using hcloud_api.Exceptions;
 using hcloud_api.Models.Objects;
+using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses.Datacenters;
+using hcloud_api.Models.Responses.Firewalls;
 using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
@@ -364,5 +366,71 @@ namespace hcloud_api.Services
         /// <returns></returns>
         /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<Network> UpdateNetwork(Network network);
+
+
+        /// <summary>
+        /// Gets a specific Firewall object.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Firewall> GetFirewall(int id);
+
+        /// <summary>
+        /// Returns all Firewall objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<GetFirewallsResponse> GetFirewalls(string name = null,
+            string labelSelector = null,
+            FirewallSortQuery sort = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new Firewall.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<CreateFirewallResponse> CreateFirewall(CreateFirewallRequest request);
+
+        /// <summary>
+        /// Deletes a Firewall.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeleteFirewall(int id);
+
+        /// <summary>
+        /// Deletes a Firewall.
+        /// </summary>
+        /// <param name="firewall"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeleteFirewall(Firewall firewall);
+
+        /// <summary>
+        /// Updates the Firewall.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Firewall> UpdateFirewall(int id, UpdateFirewallRequest request);
+
+        /// <summary>
+        /// Updates the Firewall.
+        /// </summary>
+        /// <param name="firewall"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Firewall> UpdateFirewall(Firewall firewall);
     }
 }

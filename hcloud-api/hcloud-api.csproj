@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>hcloud-api-net</PackageId>
     <Authors>DJSvist</Authors>
-    <Version>0.1.5</Version>
+    <Version>0.1.6</Version>
     <PackageProjectUrl>https://github.com/djsvist/hcloud-api-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/djsvist/hcloud-api-net</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

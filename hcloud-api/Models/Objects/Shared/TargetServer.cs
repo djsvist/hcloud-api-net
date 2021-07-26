@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace hcloud_api.Models.Objects.LoadBalancers.Targets
+namespace hcloud_api.Models.Objects.Shared
 {
     public class TargetServer
     {

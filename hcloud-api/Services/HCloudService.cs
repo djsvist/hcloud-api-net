@@ -1,11 +1,13 @@
 ﻿using hcloud_api.Extensions;
 using hcloud_api.Models.Objects;
+using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Datacenters;
+using hcloud_api.Models.Responses.Firewalls;
 using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
@@ -33,6 +35,7 @@ namespace hcloud_api.Services
         private const string ServerPath = "servers";
         private const string ImagePath = "images";
         private const string NetworkPath = "networks";
+        private const string FirewallPath = "firewalls";
 
         private readonly HttpClient client;
 
@@ -324,6 +327,54 @@ namespace hcloud_api.Services
                     p += "&";
 
                 return p + $"{pair.Key}={pair.Value}";
+            });
+        }
+
+        public async Task<Firewall> GetFirewall(int id)
+        {
+            var result = await client.GetJsonAsync<FirewallResponse>(Append(FirewallPath, id));
+            return result.Firewall;
+        }
+
+        public async Task<GetFirewallsResponse> GetFirewalls(string name = null, string labelSelector = null, FirewallSortQuery sort = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetFirewallsResponse>(Append(FirewallPath, query));
+        }
+
+        public async Task<CreateFirewallResponse> CreateFirewall(CreateFirewallRequest request)
+        {
+            return await client.PostJsonAsync<CreateFirewallResponse>(FirewallPath, request);
+        }
+
+        public async Task DeleteFirewall(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(FirewallPath, id));
+        }
+
+        public async Task DeleteFirewall(Firewall firewall)
+        {
+            await DeleteFirewall(firewall.Id);
+        }
+
+        public async Task<Firewall> UpdateFirewall(int id, UpdateFirewallRequest request)
+        {
+            var result = await client.PutJsonAsync<FirewallResponse>(Append(FirewallPath, id), request);
+            return result.Firewall;
+        }
+
+        public async Task<Firewall> UpdateFirewall(Firewall firewall)
+        {
+            return await UpdateFirewall(firewall.Id, new UpdateFirewallRequest
+            {
+                Labels = firewall.Labels,
+                Name = firewall.Name
             });
         }
     }

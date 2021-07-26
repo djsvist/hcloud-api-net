@@ -39,6 +39,81 @@
             IDs of Server types that are supported in the Datacenter
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Rules">
+            <summary>
+            Firewall rules
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.AppliedResources">
+            <summary>
+            Not used when creating a firewall
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.LabelSelector">
+            <summary>
+            Configuration for type LabelSelector, required if type is <b>label_selector</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.Server">
+            <summary>
+            Configuration for type Server, required if type is <b>server</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.Type">
+            <summary>
+            Type of resource referenced
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.DestinationIps">
+            <summary>
+            List of permitted IPv4/IPv6 addresses in CIDR notation.
+            Use <b>0.0.0.0/0</b> to allow all IPv4 addresses and <b>::/0</b> to allow all IPv6 addresses. You can specify 100 CIDRs at most.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Direction">
+            <summary>
+            Select traffic direction on which rule should be applied. Use <b>source_ips</b> for direction <b>in</b> and <b>destination_ips</b> for direction <b>out</b>.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Port">
+            <summary>
+            Port or port range to which traffic will be allowed, only applicable for protocols TCP and UDP. A port range can be specified by separating two ports with a dash, e.g <b>1024-5000</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Protocol">
+            <summary>
+            Type of traffic to allow
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.SourceIps">
+            <summary>
+            List of permitted IPv4/IPv6 addresses in CIDR notation.
+            Use <b>0.0.0.0/0</b> to allow all IPv4 addresses and <b>::/0</b> to allow all IPv6 addresses. You can specify 100 CIDRs at most.
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Objects.HAction.Id">
             <summary>
             ID of the Resource
@@ -419,11 +494,6 @@
             <br><b>Required field</b></br>
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LabelSelector.Selector">
-            <summary>
-            Label selector
-            </summary>
-        </member>
         <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.HealthStatuses">
             <summary>
             List of health statuses of the services on this target
@@ -738,16 +808,6 @@
             IDs of Volumes assigned to this Server
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Objects.Servers.Firewall.Id">
-            <summary>
-            ID of the Resource
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Objects.Servers.Firewall.Status">
-            <summary>
-            Status of the Firewall on the Server
-            </summary>
-        </member>
         <member name="P:hcloud_api.Models.Objects.Servers.IPv4.Blocked">
             <summary>
             If the IP is blocked by our anti abuse dept
@@ -806,6 +866,16 @@
         <member name="P:hcloud_api.Models.Objects.Servers.PublicNetwork.IPv6">
             <summary>
             IPv6 network assigned to this Server and its reverse DNS entry
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.ServerFirewall.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.ServerFirewall.Status">
+            <summary>
+            Status of the Firewall on the Server
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Objects.ServerType.Id">
@@ -873,6 +943,11 @@
             An object providing for details on the error (schema depends on code)
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.LabelSelector.Selector">
+            <summary>
+            Label selector
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Objects.Shared.Price.Location">
             <summary>
             Name of the Location the price is for
@@ -916,6 +991,32 @@
         <member name="P:hcloud_api.Models.Objects.Shared.Resource.Type">
             <summary>
             Type of resource referenced
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Rules">
+            <summary>
+            Firewall rules
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Name">
+            <summary>
+            New firewall name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Requests.Images.UpdateImageRequest.Description">
@@ -1209,6 +1310,7 @@
             Returns a specific Location object.
             </summary>
             <param name="id">ID of Location</param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
             <returns></returns>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLocations(System.String)">
@@ -1216,6 +1318,7 @@
             Returns all Location objects.
             </summary>
             <param name="name">Can be used to filter Locations by their name. The response will only contain the Location matching the specified name.</param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
             <returns></returns>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetISO(System.Int32)">
@@ -1232,6 +1335,7 @@
             <param name="name">Can be used to filter ISOs by their name. The response will only contain the ISO matching the specified name.</param>
             <param name="page"></param>
             <param name="perPage"></param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
             <returns></returns>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetServerType(System.Int32)">
@@ -1240,6 +1344,7 @@
             </summary>
             <param name="id">ID of Server Type</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetServerTypes(System.String)">
             <summary>
@@ -1247,6 +1352,7 @@
             </summary>
             <param name="name">Can be used to filter Server types by their name. The response will only contain the Server type matching the specified name.</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetDatacenter(System.Int32)">
             <summary>
@@ -1254,6 +1360,7 @@
             </summary>
             <param name="id">ID of Datacenter</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetDatacenters(System.String)">
             <summary>
@@ -1261,6 +1368,7 @@
             </summary>
             <param name="name">Can be used to filter Datacenters by their name. The response will only contain the Datacenter matching the specified name. When the name does not match the Datacenter name format, an invalid_input error is returned.</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancerType(System.Int32)">
             <summary>
@@ -1268,6 +1376,7 @@
             </summary>
             <param name="id">ID of Load Balancer type</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancerTypes(System.String)">
             <summary>
@@ -1276,6 +1385,7 @@
             </summary>
             <param name="name"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancer(System.Int32)">
             <summary>
@@ -1283,6 +1393,7 @@
             </summary>
             <param name="id">ID of the Load Balancer</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancers(System.String,System.String,hcloud_api.Models.Requests.LoadBalancers.LoadBalancerSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -1294,6 +1405,7 @@
             <param name="page"></param>
             <param name="perPage"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.CreateLoadBalancer(hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest)">
             <summary>
@@ -1301,6 +1413,7 @@
             </summary>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteLoadBalancer(hcloud_api.Models.Objects.LoadBalancer)">
             <summary>
@@ -1308,6 +1421,7 @@
             </summary>
             <param name="loadBalancer"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteLoadBalancer(System.Int32)">
             <summary>
@@ -1315,6 +1429,7 @@
             </summary>
             <param name="id">ID of the Load Balancer</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateLoadBalancer(hcloud_api.Models.Objects.LoadBalancer)">
             <summary>
@@ -1322,6 +1437,7 @@
             </summary>
             <param name="loadBalancer"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateLoadBalancer(System.Int32,hcloud_api.Models.Requests.LoadBalancers.UpdateLoadBalancerRequest)">
             <summary>
@@ -1330,6 +1446,7 @@
             <param name="id">ID of the Load Balancer</param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetServer(System.Int32)">
             <summary>
@@ -1337,6 +1454,7 @@
             </summary>
             <param name="id">ID of the Server</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetServers(System.String,System.String,hcloud_api.Models.Requests.Servers.ServerSortQuery,hcloud_api.Models.Requests.Servers.ServerStatusQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -1349,6 +1467,7 @@
             <param name="page"></param>
             <param name="perPage"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.CreateServer(hcloud_api.Models.Requests.Servers.CreateServerRequest)">
             <summary>
@@ -1356,6 +1475,7 @@
             </summary>
             <param name="template"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteServer(hcloud_api.Models.Objects.Server)">
             <summary>
@@ -1363,6 +1483,7 @@
             </summary>
             <param name="server"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteServer(System.Int32)">
             <summary>
@@ -1370,6 +1491,7 @@
             </summary>
             <param name="id">ID of the Server</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateServer(hcloud_api.Models.Objects.Server)">
             <summary>
@@ -1380,6 +1502,7 @@
             </summary>
             <param name="server"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateServer(System.Int32,hcloud_api.Models.Requests.Servers.UpdateServerRequest)">
             <summary>
@@ -1391,6 +1514,7 @@
             <param name="id">ID of the Server</param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetImage(System.Int32)">
             <summary>
@@ -1398,6 +1522,7 @@
             </summary>
             <param name="id">ID of the Image</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetImages(System.String,System.String,hcloud_api.Models.Requests.Images.ImageSortQuery,hcloud_api.Models.Requests.Images.ImageTypeQuery,hcloud_api.Models.Requests.Images.ImageStatusQuery,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -1413,6 +1538,7 @@
             <param name="page"></param>
             <param name="perPage"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteImage(System.Int32)">
             <summary>
@@ -1420,6 +1546,7 @@
             </summary>
             <param name="id">ID of the Image</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteImage(hcloud_api.Models.Objects.Image)">
             <summary>
@@ -1427,6 +1554,7 @@
             </summary>
             <param name="image"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateImage(System.Int32,hcloud_api.Models.Requests.Images.UpdateImageRequest)">
             <summary>
@@ -1435,6 +1563,7 @@
             <param name="id">ID of the Image</param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateImage(hcloud_api.Models.Objects.Image)">
             <summary>
@@ -1442,6 +1571,7 @@
             </summary>
             <param name="image"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetNetwork(System.Int32)">
             <summary>
@@ -1449,6 +1579,7 @@
             </summary>
             <param name="id">ID of the network</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetNetworks(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -1459,6 +1590,7 @@
             <param name="page"></param>
             <param name="perPage"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.CreateNetwork(hcloud_api.Models.Requests.Networks.CreateNetworkRequest)">
             <summary>
@@ -1468,6 +1600,7 @@
             </summary>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteNetwork(System.Int32)">
             <summary>
@@ -1475,6 +1608,7 @@
             </summary>
             <param name="id">ID of the network</param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.DeleteNetwork(hcloud_api.Models.Objects.Network)">
             <summary>
@@ -1482,6 +1616,7 @@
             </summary>
             <param name="network"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateNetwork(System.Int32,hcloud_api.Models.Requests.Networks.UpdateNetworkRequest)">
             <summary>
@@ -1490,6 +1625,7 @@
             <param name="id">ID of the network</param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.UpdateNetwork(hcloud_api.Models.Objects.Network)">
             <summary>
@@ -1497,6 +1633,68 @@
             </summary>
             <param name="network"></param>
             <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFirewall(System.Int32)">
+            <summary>
+            Gets a specific Firewall object.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFirewalls(System.String,System.String,hcloud_api.Models.Requests.Firewalls.FirewallSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Firewall objects.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateFirewall(hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest)">
+            <summary>
+            Creates a new Firewall.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFirewall(System.Int32)">
+            <summary>
+            Deletes a Firewall.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFirewall(hcloud_api.Models.Objects.Firewall)">
+            <summary>
+            Deletes a Firewall.
+            </summary>
+            <param name="firewall"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFirewall(System.Int32,hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest)">
+            <summary>
+            Updates the Firewall.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFirewall(hcloud_api.Models.Objects.Firewall)">
+            <summary>
+            Updates the Firewall.
+            </summary>
+            <param name="firewall"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
         </member>
     </members>
 </doc>
