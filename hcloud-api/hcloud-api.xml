@@ -1,0 +1,1700 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>hcloud-api</name>
+    </assembly>
+    <members>
+        <member name="P:hcloud_api.Models.Objects.Datacenter.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenter.Name">
+            <summary>
+            Unique identifier of the Datacenter
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenter.Description">
+            <summary>
+            Description of the Datacenter
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenter.ServerTypes">
+            <summary>
+            The Server types the Datacenter can handle
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenters.DcServerTypes.Available">
+            <summary>
+            IDs of Server types that are supported and for which the Datacenter has enough resources left
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenters.DcServerTypes.AvailableForMigration">
+            <summary>
+            IDs of Server types that are supported and for which the Datacenter has enough resources left
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Datacenters.DcServerTypes.Supported">
+            <summary>
+            IDs of Server types that are supported in the Datacenter
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewall.Rules">
+            <summary>
+            Firewall rules
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.AppliedResources">
+            <summary>
+            Not used when creating a firewall
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.LabelSelector">
+            <summary>
+            Configuration for type LabelSelector, required if type is <b>label_selector</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.Server">
+            <summary>
+            Configuration for type Server, required if type is <b>server</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.AppliedObject.Type">
+            <summary>
+            Type of resource referenced
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.DestinationIps">
+            <summary>
+            List of permitted IPv4/IPv6 addresses in CIDR notation.
+            Use <b>0.0.0.0/0</b> to allow all IPv4 addresses and <b>::/0</b> to allow all IPv6 addresses. You can specify 100 CIDRs at most.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Direction">
+            <summary>
+            Select traffic direction on which rule should be applied. Use <b>source_ips</b> for direction <b>in</b> and <b>destination_ips</b> for direction <b>out</b>.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Port">
+            <summary>
+            Port or port range to which traffic will be allowed, only applicable for protocols TCP and UDP. A port range can be specified by separating two ports with a dash, e.g <b>1024-5000</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.Protocol">
+            <summary>
+            Type of traffic to allow
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Firewalls.Rule.SourceIps">
+            <summary>
+            List of permitted IPv4/IPv6 addresses in CIDR notation.
+            Use <b>0.0.0.0/0</b> to allow all IPv4 addresses and <b>::/0</b> to allow all IPv6 addresses. You can specify 100 CIDRs at most.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Command">
+            <summary>
+            Command executed in the Action
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Error">
+            <summary>
+            Error message for the Action if error occurred, otherwise null
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Finished">
+            <summary>
+            Point in time when the Action was finished.
+            Only set if the Action is finished otherwise null.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Progress">
+            <summary>
+            Progress of Action in percent
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Resources">
+            <summary>
+            Resources the Action relates to
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Started">
+            <summary>
+            Point in time when the Action was finished.
+            Only set if the Action is finished otherwise null.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.HAction.Status">
+            <summary>
+            Status of the Action
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Name">
+            <summary>
+            Unique identifier of the Image. This value is only set for system Images.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Description">
+            <summary>
+            Description of the Image
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.BoundTo">
+            <summary>
+            ID of Server the Image is bound to. Only set for Images of type <b>backup</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.BuildId">
+            <summary>
+            Build ID of the Image
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Deleted">
+            <summary>
+            Point in time where the Image was deleted
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Deprecated">
+            <summary>
+            Point in time where the Image was deleted
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.DiskSize">
+            <summary>
+            Size of the disk contained in the Image in GB
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.ImageSize">
+            <summary>
+            Size of the Image file in our storage in GB.
+            For snapshot Images this is the value relevant for calculating costs for the Image.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.OsFlavor">
+            <summary>
+            Flavor of operating system contained in the Image
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.OsVersion">
+            <summary>
+            Operating system version
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Protection">
+            <summary>
+            Protection configuration for the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.RapidDeploy">
+            <summary>
+            Indicates that rapid deploy of the Image is available
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Status">
+            <summary>
+            Whether the Image can be used or if it's still being created or unavailable
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Image.Type">
+            <summary>
+            Type of the Image
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Images.CreatedFrom.Id">
+            <summary>
+            ID of the Server the Image was created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Images.CreatedFrom.Name">
+            <summary>
+            Server name at the time the Image was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ISO.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ISO.Name">
+            <summary>
+            Unique identifier of the ISO. Only set for public ISOs
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ISO.Description">
+            <summary>
+            Description of the ISO
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ISO.Deprecated">
+            <summary>
+            Timestamp of deprecation, null if ISO is still available.
+            After the deprecation time it will no longer be possible to attach the ISO to Servers.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ISO.Type">
+            <summary>
+            Type of the ISO
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Algorithm">
+            <summary>
+            Algorithm of the Load Balancer
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.IncludedTraffic">
+            <summary>
+            Free Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.InboundTraffic">
+            <summary>
+            Inbound Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.OutboundTraffic">
+            <summary>
+            Outbound Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.PrivateNetworks">
+            <summary>
+            Private networks information
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Protection">
+            <summary>
+            Protection configuration for the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.PublicNetwork">
+            <summary>
+            Public network information
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Services">
+            <summary>
+            Array of services
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancer.Targets">
+            <summary>
+            List of targets that belong to this Load Balancer
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Http">
+            <summary>
+            Additional configuration for protocol http
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Interval">
+            <summary>
+            Time interval in seconds health checks are performed
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Port">
+            <summary>
+            Port the health check will be performed on
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Protocol">
+            <summary>
+            Type of the health check
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Retries">
+            <summary>
+            Unsuccessful retries needed until a target is considered unhealthy; an unhealthy target needs the same number of successful retries to become healthy again
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheck.Timeout">
+            <summary>
+            Time in seconds after an attempt is considered a timeout
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheckHttpCfg.Domain">
+            <summary>
+            Host header to send in the HTTP request. 
+            May not contain spaces, percent or backslash symbols.
+            Can be null, in that case no host header is sent.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheckHttpCfg.Path">
+            <summary>
+            HTTP path to use for health checks
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheckHttpCfg.Response">
+            <summary>
+            String that must be contained in HTTP response in order to pass the health check
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheckHttpCfg.StatusCodes">
+            <summary>
+            List of returned HTTP status codes in order to pass the health check.
+            Supports the wildcards <b>?</b> for exactly one character and <b>*</b> for multiple ones. 
+            The default is to pass the health check for any status code between 2?? and 3??.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.HealthChecks.HealthCheckHttpCfg.TLS">
+            <summary>
+            Use HTTPS for health check
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.IPInfo.IP">
+            <summary>
+            IP address of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.LBAlgorithm.Type">
+            <summary>
+            Type of the algorithm
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.PublicNetwork.Enabled">
+            <summary>
+            Public Interface enabled or not
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.PublicNetwork.IPv4">
+            <summary>
+            IP address (v4)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.PublicNetwork.IPv6">
+            <summary>
+            IP address (v6)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.HttpCfg.Certificates">
+            <summary>
+            IDs of the Certificates to use for TLS/SSL termination by the Load Balancer; empty for TLS/SSL passthrough or if <b>protocol</b> is "http"
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.HttpCfg.CookieLifetime">
+            <summary>
+            Lifetime of the cookie used for sticky sessions
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.HttpCfg.CookieName">
+            <summary>
+            Name of the cookie used for sticky sessions.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.HttpCfg.RedirectHttp">
+            <summary>
+            Redirect HTTP requests to HTTPS. Only available if protocol is "https". Default <b>false</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.HttpCfg.StickySessions">
+            <summary>
+            Use sticky sessions. Only available if protocol is "http" or "https". Default <b>false</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.DestinationPort">
+            <summary>
+            Port the Load Balancer will balance to
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.HealthCheck">
+            <summary>
+            Service health check
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.HttpConfiguration">
+            <summary>
+            Configuration option for protocols http and https
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.ListenPort">
+            <summary>
+            Port the Load Balancer listens on
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.Protocol">
+            <summary>
+            Protocol of the Load Balancer
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Services.LoadBalancerService.ProxyProtocol">
+            <summary>
+            Is Proxyprotocol enabled or not
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.HealthStatuses">
+            <summary>
+            List of health statuses of the services on this target
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.IP">
+            <summary>
+            IP targets where the traffic should be routed through.
+            It is only possible to use the (Public or vSwitch) IPs of Hetzner Online Root Servers belonging to the project owner. 
+            IPs belonging to other users are blocked. 
+            Additionally IPs belonging to services provided by Hetzner Cloud (Servers, Load Balancers, ...) are blocked as well.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.LabelSelector">
+            <summary>
+            Label selector and a list of selected targets
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.Server">
+            <summary>
+            Server where the traffic should be routed through
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.Targets">
+            <summary>
+            List of selected targets
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.Type">
+            <summary>
+            Type of the resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancers.Targets.LoadBalancerTarget.UsePrivateIp">
+            <summary>
+            Use the private network IP instead of the public IP. Default value is false.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.Id">
+            <summary>
+            ID of the Load Balancer type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.Name">
+            <summary>
+            Unique identifier of the Load Balancer type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.Description">
+            <summary>
+            Description of the Load Balancer type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.Deprecated">
+            <summary>
+            Point in time when the Load Balancer type is deprecated
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.MaxAssignedCertificates">
+            <summary>
+            Number of SSL Certificates that can be assigned to a single Load Balancer
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.MaxConnections">
+            <summary>
+            Number of maximum simultaneous open connections
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.MaxServices">
+            <summary>
+            Number of services a Load Balancer of this type can have
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.MaxTargets">
+            <summary>
+            Number of targets a single Load Balancer can have
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.LoadBalancerType.Prices">
+            <summary>
+            Prices in different network zones
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Id">
+            <summary>
+            ID of the Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Name">
+            <summary>
+            Unique identifier of the Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Description">
+            <summary>
+            Description of the Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.City">
+            <summary>
+            City the Location is closest to
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Country">
+            <summary>
+            SO 3166-1 alpha-2 code of the country the Location resides in
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Latitude">
+            <summary>
+            Latitude of the city closest to the Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.Longitude">
+            <summary>
+            Longitude of the city closest to the Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Location.NetworkZone">
+            <summary>
+            Name of network zone this Location resides in
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Id">
+            <summary>
+            ID of the Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Name">
+            <summary>
+            Name of the Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Created">
+            <summary>
+            Point in time when the Network was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.IpRange">
+            <summary>
+            IPv4 prefix of the whole Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.LoadBalancers">
+            <summary>
+            Array of IDs of Load Balancers attached to this Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Protection">
+            <summary>
+            Protection configuration for the Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Routes">
+            <summary>
+            Array of routes set in this Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Servers">
+            <summary>
+            Array of IDs of Servers attached to this Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Network.Subnets">
+            <summary>
+            Array subnets allocated in this Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Route.Destination">
+            <summary>
+            Destination network or host of this route. 
+            Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first IP of the networks ip_range or with 172.31.1.1. 
+            Must be one of the private IPv4 ranges of RFC1918.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Route.Gateway">
+            <summary>
+            Gateway for the route. 
+            Cannot be the first IP of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of Servers.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Subnet.Gateway">
+            <summary>
+            Gateway for Servers attached to this subnet. 
+            For subnets of type Server this is always the first IP of the network IP range.
+            <br><b>Not used when creating a subnet</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Subnet.IpRange">
+            <summary>
+            Range to allocate IPs from. Must be a Subnet of the ip_range of the parent network object and must not overlap with any other subnets or with any destinations in routes. 
+            Minimum Network size is /30. We suggest that you pick a bigger Network with a /24 netmask.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Subnet.NetworkZone">
+            <summary>
+            Name of Network zone. Currently eu-central is the only available zone.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Networks.Subnet.Type">
+            <summary>
+            Type of Subnetwork
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="T:hcloud_api.Models.Objects.Networks.SubnetType">
+            <summary>
+            Type of Subnetwork
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.BackupWindow">
+            <summary>
+            Time window (UTC) in which the backup will run, or null if the backups are not enabled
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Datacenter">
+            <summary>
+            Datacenter this Resource is located at
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.IncludedTraffic">
+            <summary>
+            Free Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.InboundTraffic">
+            <summary>
+            Inbound Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.ISO">
+            <summary>
+            ISO Image that is attached to this Server. Null if no ISO is attached.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Locked">
+            <summary>
+            True if Server has been locked and is not available to user
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.OutboundTraffic">
+            <summary>
+            Outbound Traffic for the current billing period in bytes
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.PrimaryDiskSize">
+            <summary>
+            Size of the primary Disk
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.PrivateNetworks">
+            <summary>
+            Private networks information
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Protection">
+            <summary>
+            Protection configuration for the Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.PublicNetwork">
+            <summary>
+            Public network information. 
+            The Server's IPv4 address can be found in <b>PublicNetwork->IPv4->IP</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.RescueEnabled">
+            <summary>
+            True if rescue mode is enabled. Server will then boot into rescue system on next reboot
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.ServerType">
+            <summary>
+            Type of Server - determines how much ram, disk and cpu a Server has
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Status">
+            <summary>
+            Status of the Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Server.Volumes">
+            <summary>
+            IDs of Volumes assigned to this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv4.Blocked">
+            <summary>
+            If the IP is blocked by our anti abuse dept
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv4.DNSPTR">
+            <summary>
+            Reverse DNS PTR entry for the IPv4 addresses of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv4.IP">
+            <summary>
+            IP address (v4) of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv6.Blocked">
+            <summary>
+            If the IP is blocked by our anti abuse dept
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv6.DNSPTRs">
+            <summary>
+            Reverse DNS PTR entries for the IPv6 addresses of this Server, <b>null</b> by default
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv6.IP">
+            <summary>
+            IP address (v6) of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv6.IPv6DNSPTR.DNSPTR">
+            <summary>
+            DNS pointer for the specific IP address
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.IPv6.IPv6DNSPTR.IP">
+            <summary>
+            Single IPv6 address of this Server for which the reverse DNS entry has been set up
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.PublicNetwork.Firewalls">
+            <summary>
+            Firewalls applied to the public network interface of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.PublicNetwork.FloatingIPs">
+            <summary>
+            IDs of Floating IPs assigned to this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.PublicNetwork.IPv4">
+            <summary>
+            IP address (v4) and its reverse DNS entry of this Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.PublicNetwork.IPv6">
+            <summary>
+            IPv6 network assigned to this Server and its reverse DNS entry
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.ServerFirewall.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Servers.ServerFirewall.Status">
+            <summary>
+            Status of the Firewall on the Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Id">
+            <summary>
+            ID of the Server type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Name">
+            <summary>
+            Unique identifier of the Server type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Description">
+            <summary>
+            Description of the Server type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Cores">
+            <summary>
+            Number of cpu cores a Server of this type will have
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.CpuType">
+            <summary>
+            Type of cpu
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Deprecated">
+            <summary>
+            True if Server type is deprecated
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Disk">
+            <summary>
+            Disk size a Server of this type will have in GB
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Memory">
+            <summary>
+            Memory a Server of this type will have in GB
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.Prices">
+            <summary>
+            Prices in different Locations
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.ServerType.StorageType">
+            <summary>
+            Type of Server boot drive. Local has higher speed. Network has better availability.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Error.Code">
+            <summary>
+            Fixed machine readable code
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Error.Message">
+            <summary>
+            Humanized error message
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Error.Details">
+            <summary>
+            An object providing for details on the error (schema depends on code)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.LabelSelector.Selector">
+            <summary>
+            Label selector
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Price.Location">
+            <summary>
+            Name of the Location the price is for
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Price.Hourly">
+            <summary>
+            Hourly costs for a Server type in this Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Price.Monthly">
+            <summary>
+            Monthly costs for a Server type in this Location
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Price.PriceDetail.Gross">
+            <summary>
+            Price with VAT added
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Price.PriceDetail.Net">
+            <summary>
+            Price without VAT
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Protection.Delete">
+            <summary>
+            If true, prevents the Resource from being deleted
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Protection.Rebuild">
+            <summary>
+            If true, prevents the Resource from being rebuilt
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Resource.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Shared.Resource.Type">
+            <summary>
+            Type of resource referenced
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Rules">
+            <summary>
+            Firewall rules
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Name">
+            <summary>
+            New firewall name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Images.UpdateImageRequest.Description">
+            <summary>
+            New description of Image
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Images.UpdateImageRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Images.UpdateImageRequest.Type">
+            <summary>
+            Destination Image type to convert to
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Algorithm">
+            <summary>
+            Algorithm of the Load Balancer
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.LoadBalancerType">
+            <summary>
+            Load Balancer type this Load Balancer should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.LoadBalancerTypeId">
+            <summary>
+            ID of the Load Balancer type this Load Balancer should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.LoadBalancerTypeName">
+            <summary>
+            Name of the Load Balancer type this Load Balancer should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Name">
+            <summary>
+            Name of the Load Balancer
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Network">
+            <summary>
+            ID of the network the Load Balancer should be attached to on creation
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.NetworkZone">
+            <summary>
+            Name of network zone
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.PublicInterface">
+            <summary>
+            Enable or disable the public interface of the Load Balancer
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Services">
+            <summary>
+            Array of services
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest.Targets">
+            <summary>
+            Array of targets
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.UpdateLoadBalancerRequest.Name">
+            <summary>
+            New Load Balancer name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.LoadBalancers.UpdateLoadBalancerRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.CreateNetworkRequest.Name">
+            <summary>
+            Name of the Network
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.CreateNetworkRequest.IpRange">
+            <summary>
+            IP range of the whole network which must span all included subnets. 
+            Must be one of the private IPv4 ranges of RFC1918. Minimum network size is /24. 
+            We highly recommend that you pick a larger network with a /16 netmask.
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.CreateNetworkRequest.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.CreateNetworkRequest.Routes">
+            <summary>
+            Array of routes set in this network. 
+            The destination of the route must be one of the private IPv4 ranges of RFC1918. 
+            The gateway must be a subnet/IP of the ip_range of the network object.
+            The destination must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first IP of the networks ip_range or with 172.31.1.1. 
+            The gateway cannot be the first IP of the networks ip_range and also cannot be 172.31.1.1.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.CreateNetworkRequest.Subnets">
+            <summary>
+            Array subnets allocated in this Network
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.UpdateNetworkRequest.Name">
+            <summary>
+            New network name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Networks.UpdateNetworkRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Automount">
+            <summary>
+            Auto-mount Volumes after attach
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Datacenter">
+            <summary>
+            Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterId">
+            <summary>
+            ID of Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterName">
+            <summary>
+            Name of Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Firewalls">
+            <summary>
+            Firewalls which should be applied on the Server's public network interface at creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Image">
+            <summary>
+            Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageId">
+            <summary>
+            ID of the Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageName">
+            <summary>
+            Name of the Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Location">
+            <summary>
+            Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationId">
+            <summary>
+            ID of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationName">
+            <summary>
+            Name of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Name">
+            <summary>
+            Name of the Server to create (must be unique per Project and a valid hostname as per RFC 1123)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Networks">
+            <summary>
+            Network IDs which should be attached to the Server private network interface at the creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerType">
+            <summary>
+            Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeId">
+            <summary>
+            ID of the Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeName">
+            <summary>
+            Name of the Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.SSHKeys">
+            <summary>
+            SSH key IDs (integer) or names (string) which should be injected into the Server at creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.StartAfterCreate">
+            <summary>
+            Start Server right after creation. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.UserData">
+            <summary>
+            Cloud-Init user data to use during Server creation. This field is limited to 32KiB.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Volumes">
+            <summary>
+            Volume IDs which should be attached to the Server at the creation time.
+            Volumes must be in the same Location.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.FirewallId.Firewall">
+            <summary>
+            ID of the Firewall
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Name">
+            <summary>
+            New name to set
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Datacenters.DatacentersResponse.Recommendation">
+            <summary>
+            The Datacenter which is recommended to be used to create new Servers.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.LastPage">
+            <summary>
+            ID of the last page available. Can be null if the current page is the last one.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.NextPage">
+            <summary>
+            ID of the next page. Can be null if the current page is the last one.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.Page">
+            <summary>
+            Current page number
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.PerPage">
+            <summary>
+            Maximum number of items shown per page in the response
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.PreviousPage">
+            <summary>
+            ID of the previous page. Can be null if the current page is the first one.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Metas.Pagination.TotalEntries">
+            <summary>
+            The total number of entries that exist in the database for this query. Nullable if unknown.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Servers.CreateServerResponse.RootPassword">
+            <summary>
+            Root password when no SSH keys have been specified
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLocation(System.Int32)">
+            <summary>
+            Returns a specific Location object.
+            </summary>
+            <param name="id">ID of Location</param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLocations(System.String)">
+            <summary>
+            Returns all Location objects.
+            </summary>
+            <param name="name">Can be used to filter Locations by their name. The response will only contain the Location matching the specified name.</param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetISO(System.Int32)">
+            <summary>
+            Returns a specific ISO object.
+            </summary>
+            <param name="id">ID of the ISO</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetISOs(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all available ISO objects.
+            </summary>
+            <param name="name">Can be used to filter ISOs by their name. The response will only contain the ISO matching the specified name.</param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetServerType(System.Int32)">
+            <summary>
+            Gets a specific Server type object.
+            </summary>
+            <param name="id">ID of Server Type</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetServerTypes(System.String)">
+            <summary>
+            Gets all Server type objects.
+            </summary>
+            <param name="name">Can be used to filter Server types by their name. The response will only contain the Server type matching the specified name.</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetDatacenter(System.Int32)">
+            <summary>
+            Returns a specific Datacenter object.
+            </summary>
+            <param name="id">ID of Datacenter</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetDatacenters(System.String)">
+            <summary>
+            Returns all Datacenter objects.
+            </summary>
+            <param name="name">Can be used to filter Datacenters by their name. The response will only contain the Datacenter matching the specified name. When the name does not match the Datacenter name format, an invalid_input error is returned.</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancerType(System.Int32)">
+            <summary>
+            Gets a specific Load Balancer type object.
+            </summary>
+            <param name="id">ID of Load Balancer type</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancerTypes(System.String)">
+            <summary>
+            Can be used to filter Load Balancer types by their name. 
+            The response will only contain the Load Balancer type matching the specified name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancer(System.Int32)">
+            <summary>
+            Gets a specific Load Balancer object.
+            </summary>
+            <param name="id">ID of the Load Balancer</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetLoadBalancers(System.String,System.String,hcloud_api.Models.Requests.LoadBalancers.LoadBalancerSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets all existing Load Balancers that you have available.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelectors">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateLoadBalancer(hcloud_api.Models.Requests.LoadBalancers.CreateLoadBalancerRequest)">
+            <summary>
+            Creates a Load Balancer.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteLoadBalancer(hcloud_api.Models.Objects.LoadBalancer)">
+            <summary>
+            Deletes a Load Balancer.
+            </summary>
+            <param name="loadBalancer"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteLoadBalancer(System.Int32)">
+            <summary>
+            Deletes a Load Balancer.
+            </summary>
+            <param name="id">ID of the Load Balancer</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateLoadBalancer(hcloud_api.Models.Objects.LoadBalancer)">
+            <summary>
+            Updates a Load Balancer. You can update a Load Balancer’s name and a Load Balancer’s labels.
+            </summary>
+            <param name="loadBalancer"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateLoadBalancer(System.Int32,hcloud_api.Models.Requests.LoadBalancers.UpdateLoadBalancerRequest)">
+            <summary>
+            Updates a Load Balancer. You can update a Load Balancer’s name and a Load Balancer’s labels.
+            </summary>
+            <param name="id">ID of the Load Balancer</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetServer(System.Int32)">
+            <summary>
+            Returns a specific Server object. The Server must exist inside the Project
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetServers(System.String,System.String,hcloud_api.Models.Requests.Servers.ServerSortQuery,hcloud_api.Models.Requests.Servers.ServerStatusQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all existing Server objects
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="status">The response will only contain Server matching the status</param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateServer(hcloud_api.Models.Requests.Servers.CreateServerRequest)">
+            <summary>
+            Creates a new Server. Returns preliminary information about the Server as well as an Action that covers progress of creation.
+            </summary>
+            <param name="template"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteServer(hcloud_api.Models.Objects.Server)">
+            <summary>
+            Deletes a Server. This immediately removes the Server from your account, and it is no longer accessible.
+            </summary>
+            <param name="server"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteServer(System.Int32)">
+            <summary>
+            Deletes a Server. This immediately removes the Server from your account, and it is no longer accessible.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateServer(hcloud_api.Models.Objects.Server)">
+            <summary>
+            Updates a Server. You can update a Server’s name and a Server’s labels.
+            Please note that Server names must be unique per Project and valid hostnames as per RFC 1123 (i.e. may only contain letters, digits, periods, and dashes). 
+            Also note that when updating labels, the Server’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="server"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateServer(System.Int32,hcloud_api.Models.Requests.Servers.UpdateServerRequest)">
+            <summary>
+            Updates a Server. You can update a Server’s name and a Server’s labels.
+            Please note that Server names must be unique per Project and valid hostnames as per RFC 1123 (i.e. may only contain letters, digits, periods, and dashes). 
+            Also note that when updating labels, the Server’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetImage(System.Int32)">
+            <summary>
+            Returns a specific Image object.
+            </summary>
+            <param name="id">ID of the Image</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetImages(System.String,System.String,hcloud_api.Models.Requests.Images.ImageSortQuery,hcloud_api.Models.Requests.Images.ImageTypeQuery,hcloud_api.Models.Requests.Images.ImageStatusQuery,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Image objects. You can select specific Image types only and sort the results by using parameters.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="type"></param>
+            <param name="status">The response will only contain Images matching the status.</param>
+            <param name="boundTo">Server ID linked to the Image. Only available for Images of type <b>backup</b></param>
+            <param name="includeDeprecated"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteImage(System.Int32)">
+            <summary>
+            Deletes an Image. Only Images of type <b>snapshot</b> and <b>backup</b> can be deleted.
+            </summary>
+            <param name="id">ID of the Image</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteImage(hcloud_api.Models.Objects.Image)">
+            <summary>
+            Deletes an Image. Only Images of type <b>snapshot</b> and <b>backup</b> can be deleted.
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateImage(System.Int32,hcloud_api.Models.Requests.Images.UpdateImageRequest)">
+            <summary>
+            Updates the Image. You may change the description, convert a Backup Image to a Snapshot Image or change the Image labels. Only Images of type <b>snapshot</b> and <b>backup</b> can be updated.
+            </summary>
+            <param name="id">ID of the Image</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateImage(hcloud_api.Models.Objects.Image)">
+            <summary>
+            Updates the Image. You may change the description, convert a Backup Image to a Snapshot Image or change the Image labels. Only Images of type <b>snapshot</b> and <b>backup</b> can be updated.
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetNetwork(System.Int32)">
+            <summary>
+            Gets a specific network object.
+            </summary>
+            <param name="id">ID of the network</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetNetworks(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets all existing networks that you have available.
+            </summary>
+            <param name="name">Can be used to filter networks by their name. The response will only contain the networks matching the specified name.</param>
+            <param name="labelSelector">Can be used to filter networks by labels. The response will only contain networks with a matching label selector pattern.</param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateNetwork(hcloud_api.Models.Requests.Networks.CreateNetworkRequest)">
+            <summary>
+            Creates a network with the specified <b>ip_range</b>.
+            <br>You may specify one or more <b>subnets</b>.You can also add more Subnets later by using the add subnet action.If you do not specify an ip_range in the subnet we will automatically pick the first available /24 range for you.</br>
+            <br>You may specify one or more routes in <b>routes</b>.You can also add more routes later by using the add route action.</br>
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteNetwork(System.Int32)">
+            <summary>
+            Deletes a network. If there are Servers attached they will be detached in the background.
+            </summary>
+            <param name="id">ID of the network</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteNetwork(hcloud_api.Models.Objects.Network)">
+            <summary>
+            Deletes a network. If there are Servers attached they will be detached in the background.
+            </summary>
+            <param name="network"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateNetwork(System.Int32,hcloud_api.Models.Requests.Networks.UpdateNetworkRequest)">
+            <summary>
+            Updates the network properties.
+            </summary>
+            <param name="id">ID of the network</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateNetwork(hcloud_api.Models.Objects.Network)">
+            <summary>
+            Updates the network properties.
+            </summary>
+            <param name="network"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFirewall(System.Int32)">
+            <summary>
+            Gets a specific Firewall object.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFirewalls(System.String,System.String,hcloud_api.Models.Requests.Firewalls.FirewallSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Firewall objects.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateFirewall(hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest)">
+            <summary>
+            Creates a new Firewall.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFirewall(System.Int32)">
+            <summary>
+            Deletes a Firewall.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFirewall(hcloud_api.Models.Objects.Firewall)">
+            <summary>
+            Deletes a Firewall.
+            </summary>
+            <param name="firewall"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFirewall(System.Int32,hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest)">
+            <summary>
+            Updates the Firewall.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFirewall(hcloud_api.Models.Objects.Firewall)">
+            <summary>
+            Updates the Firewall.
+            </summary>
+            <param name="firewall"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+    </members>
+</doc>

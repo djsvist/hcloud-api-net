@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace hcloud_api.Models.Objects.Servers
 {
-    public class Firewall
+    public class ServerFirewall
     {
         /// <summary>
         /// ID of the Resource

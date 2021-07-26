@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace hcloud_api.Models.Requests.LoadBalancers
 {
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class CreateLoadBalancerRequest
     {
 #pragma warning disable IDE0052 // Удалить непрочитанные закрытые члены

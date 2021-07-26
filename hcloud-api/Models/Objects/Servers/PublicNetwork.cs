@@ -8,7 +8,7 @@ namespace hcloud_api.Models.Objects.Servers
         /// Firewalls applied to the public network interface of this Server
         /// </summary>
         [JsonProperty("firewalls")]
-        public Firewall[] Firewalls { get; set; }
+        public ServerFirewall[] Firewalls { get; set; }
 
         /// <summary>
         /// IDs of Floating IPs assigned to this Server

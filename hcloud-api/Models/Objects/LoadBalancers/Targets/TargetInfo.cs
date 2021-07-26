@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using hcloud_api.Models.Objects.Shared;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace hcloud_api.Models.Objects.LoadBalancers.Targets
