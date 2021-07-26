@@ -2,6 +2,7 @@
 using hcloud_api.Models.Objects;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
+using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Datacenters;
@@ -10,6 +11,7 @@ using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.LoadBalancerTypes;
 using hcloud_api.Models.Responses.Locations;
+using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
 using System;
@@ -30,6 +32,7 @@ namespace hcloud_api.Services
         private const string STPath = "server_types";
         private const string ServerPath = "servers";
         private const string ImagePath = "images";
+        private const string NetworkPath = "networks";
 
         private readonly HttpClient client;
 
@@ -260,7 +263,53 @@ namespace hcloud_api.Services
             });
         }
 
-        private static string Replace(string path, int id) => path.Replace("{id}", id.ToString());
+        public async Task<Network> GetNetwork(int id)
+        {
+            var result = await client.GetJsonAsync<NetworkResponse>(Append(NetworkPath, id));
+            return result.Network;
+        }
+
+        public async Task<GetNetworksResponse> GetNetworks(string name = null, string labelSelector = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetNetworksResponse>(Append(NetworkPath, query));
+        }
+
+        public async Task<Network> CreateNetwork(CreateNetworkRequest request)
+        {
+            var result = await client.PostJsonAsync<NetworkResponse>(NetworkPath, request);
+            return result.Network;
+        }
+
+        public async Task DeleteNetwork(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(NetworkPath, id));
+        }
+
+        public async Task DeleteNetwork(Network network)
+        {
+            await DeleteNetwork(network.Id);
+        }
+
+        public async Task<Network> UpdateNetwork(int id, UpdateNetworkRequest request)
+        {
+            var result = await client.PutJsonAsync<NetworkResponse>(Append(NetworkPath, id), request);
+            return result.Network;
+        }
+
+        public async Task<Network> UpdateNetwork(Network network)
+        {
+            return await UpdateNetwork(network.Id, new UpdateNetworkRequest
+            {
+                Name = network.Name,
+                Labels = network.Labels
+            });
+        }
 
         private static string Append(string path, int id) => path + "/" + id;
 

@@ -1,11 +1,13 @@
 ﻿using hcloud_api.Models.Objects;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
+using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
+using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -267,5 +269,63 @@ namespace hcloud_api.Services
         /// <param name="image"></param>
         /// <returns></returns>
         Task<Image> UpdateImage(Image image);
+
+
+        /// <summary>
+        /// Gets a specific network object.
+        /// </summary>
+        /// <param name="id">ID of the network</param>
+        /// <returns></returns>
+        Task<Network> GetNetwork(int id);
+
+        /// <summary>
+        /// Gets all existing networks that you have available.
+        /// </summary>
+        /// <param name="name">Can be used to filter networks by their name. The response will only contain the networks matching the specified name.</param>
+        /// <param name="labelSelector">Can be used to filter networks by labels. The response will only contain networks with a matching label selector pattern.</param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetNetworksResponse> GetNetworks(string name = null,
+            string labelSelector = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a network with the specified <b>ip_range</b>.
+        /// <br>You may specify one or more <b>subnets</b>.You can also add more Subnets later by using the add subnet action.If you do not specify an ip_range in the subnet we will automatically pick the first available /24 range for you.</br>
+        /// <br>You may specify one or more routes in <b>routes</b>.You can also add more routes later by using the add route action.</br>
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<Network> CreateNetwork(CreateNetworkRequest request);
+
+        /// <summary>
+        /// Deletes a network. If there are Servers attached they will be detached in the background.
+        /// </summary>
+        /// <param name="id">ID of the network</param>
+        /// <returns></returns>
+        Task DeleteNetwork(int id);
+
+        /// <summary>
+        /// Deletes a network. If there are Servers attached they will be detached in the background.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <returns></returns>
+        Task DeleteNetwork(Network network);
+
+        /// <summary>
+        /// Updates the network properties.
+        /// </summary>
+        /// <param name="id">ID of the network</param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<Network> UpdateNetwork(int id, UpdateNetworkRequest request);
+        /// <summary>
+        /// Updates the network properties.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <returns></returns>
+        Task<Network> UpdateNetwork(Network network);
     }
 }

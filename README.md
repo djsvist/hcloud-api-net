@@ -10,6 +10,7 @@ At the moment, only CRUD operations (where possible) are implemented for the fol
 `Datacenters`
 `Servers`
 `Server types`
+`Networks`
 `Images`
 `LoadBalancers`
 `LoadBalancer Types`
