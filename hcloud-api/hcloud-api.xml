@@ -993,6 +993,61 @@
             Type of resource referenced
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Format">
+            <summary>
+            Filesystem of the Volume if formatted on creation, null if not formatted on creation
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.LinuxDevice">
+            <summary>
+            Device path on the file system for the Volume
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Location">
+            <summary>
+            Location of the Volume. Volume can only be attached to Servers in the same Location.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Protection">
+            <summary>
+            Protection configuration for the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Server">
+            <summary>
+            ID of the Server the Volume is attached to, null if it is not attached at all
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Size">
+            <summary>
+            Size in GB of the Volume
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Volume.Status">
+            <summary>
+            Current status of the Volume
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Name">
             <summary>
             Name of the Resource. Must be unique per Project
@@ -1261,6 +1316,57 @@
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Automount">
+            <summary>
+            Auto-mount Volumes after attach
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Name">
+            <summary>
+            Name of the volume
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Location">
+            <summary>
+            Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.LocationId">
+            <summary>
+            ID of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.LocationName">
+            <summary>
+            Name of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Server">
+            <summary>
+            Server to which to attach the Volume once it's created (Volume will be created in the same Location as the server)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Size">
+            <summary>
+            Size in GB of the Volume
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.CreateVolumeRequest.Format">
+            <summary>
+            Format Volume after creation
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.UpdateVolumeRequest.Name">
+            <summary>
+            New name to set
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Volumes.UpdateVolumeRequest.Labels">
             <summary>
             User-defined labels (key-value pairs)
             </summary>
@@ -1695,6 +1801,69 @@
             <param name="firewall"></param>
             <returns></returns>
             <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetVolume(System.Int32)">
+            <summary>
+            Gets a specific Volume object.
+            </summary>
+            <param name="id">ID of the Volume</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetVolumes(System.String,System.String,hcloud_api.Models.Requests.Volumes.VolumeSortQuery,hcloud_api.Models.Requests.Volumes.VolumeStatusQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets all existing Volumes that you have available.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="status">The response will only contain Volumes matching the status.</param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateVolume(hcloud_api.Models.Requests.Volumes.CreateVolumeRequest)">
+            <summary>
+            Creates a new Volume attached to a Server. 
+            If you want to create a Volume that is not attached to a Server, you need to provide the <b>location</b> key instead of <b>server</b>. 
+            This can be either the ID or the name of the Location this Volume will be created in. Note that a Volume can be attached to a Server only in the same Location as the Volume itself.
+            <br/><br/>
+            Specifying the Server during Volume creation will automatically attach the Volume to that Server after it has been initialized. In that case, the <b>next_actions</b> key in the response is an array which contains a single <b>attach_volume</b> action.
+            <br/><br/>
+            The minimum Volume size is 10GB and the maximum size is 10TB (10240GB).
+            <br/><br/>
+            A volume’s name can consist of alphanumeric characters, dashes, underscores, and dots, but has to start and end with an alphanumeric character. The total length is limited to 64 characters. Volume names must be unique per Project.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteVolume(System.Int32)">
+            <summary>
+            Deletes a volume. All Volume data is irreversibly destroyed. The Volume must not be attached to a Server and it must not have delete protection enabled.
+            </summary>
+            <param name="id">ID of the Volume</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteVolume(hcloud_api.Models.Objects.Volume)">
+            <summary>
+            Deletes a volume. All Volume data is irreversibly destroyed. The Volume must not be attached to a Server and it must not have delete protection enabled.
+            </summary>
+            <param name="volume"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateVolume(System.Int32,hcloud_api.Models.Requests.Volumes.UpdateVolumeRequest)">
+            <summary>
+            Updates the Volume properties.
+            </summary>
+            <param name="id">ID of the Volume to update</param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateVolume(hcloud_api.Models.Objects.Volume)">
+            <summary>
+            Updates the Volume properties.
+            </summary>
+            <param name="volume"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

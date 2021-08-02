@@ -5,6 +5,7 @@ using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
+using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
 using hcloud_api.Models.Responses.Images;
@@ -12,6 +13,7 @@ using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
+using hcloud_api.Models.Responses.Volumes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -432,5 +434,74 @@ namespace hcloud_api.Services
         /// <returns></returns>
         /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<Firewall> UpdateFirewall(Firewall firewall);
+
+
+        /// <summary>
+        /// Gets a specific Volume object.
+        /// </summary>
+        /// <param name="id">ID of the Volume</param>
+        /// <returns></returns>
+        Task<Volume> GetVolume(int id);
+
+        /// <summary>
+        /// Gets all existing Volumes that you have available.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="sort"></param>
+        /// <param name="status">The response will only contain Volumes matching the status.</param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetVolumesResponse> GetVolumes(string name = null,
+            string labelSelector = null,
+            VolumeSortQuery sort = null,
+            VolumeStatusQuery status = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new Volume attached to a Server. 
+        /// If you want to create a Volume that is not attached to a Server, you need to provide the <b>location</b> key instead of <b>server</b>. 
+        /// This can be either the ID or the name of the Location this Volume will be created in. Note that a Volume can be attached to a Server only in the same Location as the Volume itself.
+        /// <br/><br/>
+        /// Specifying the Server during Volume creation will automatically attach the Volume to that Server after it has been initialized. In that case, the <b>next_actions</b> key in the response is an array which contains a single <b>attach_volume</b> action.
+        /// <br/><br/>
+        /// The minimum Volume size is 10GB and the maximum size is 10TB (10240GB).
+        /// <br/><br/>
+        /// A volume’s name can consist of alphanumeric characters, dashes, underscores, and dots, but has to start and end with an alphanumeric character. The total length is limited to 64 characters. Volume names must be unique per Project.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<CreateVolumeResponse> CreateVolume(CreateVolumeRequest request);
+
+        /// <summary>
+        /// Deletes a volume. All Volume data is irreversibly destroyed. The Volume must not be attached to a Server and it must not have delete protection enabled.
+        /// </summary>
+        /// <param name="id">ID of the Volume</param>
+        /// <returns></returns>
+        Task DeleteVolume(int id);
+
+        /// <summary>
+        /// Deletes a volume. All Volume data is irreversibly destroyed. The Volume must not be attached to a Server and it must not have delete protection enabled.
+        /// </summary>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        Task DeleteVolume(Volume volume);
+
+        /// <summary>
+        /// Updates the Volume properties.
+        /// </summary>
+        /// <param name="id">ID of the Volume to update</param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<Volume> UpdateVolume(int id, UpdateVolumeRequest request);
+
+        /// <summary>
+        /// Updates the Volume properties.
+        /// </summary>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        Task<Volume> UpdateVolume(Volume volume);
     }
 }

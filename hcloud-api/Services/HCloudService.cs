@@ -5,6 +5,7 @@ using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
+using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
@@ -16,6 +17,7 @@ using hcloud_api.Models.Responses.Locations;
 using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
+using hcloud_api.Models.Responses.Volumes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,7 @@ namespace hcloud_api.Services
         private const string ImagePath = "images";
         private const string NetworkPath = "networks";
         private const string FirewallPath = "firewalls";
+        private const string VolumePath = "volumes";
 
         private readonly HttpClient client;
 
@@ -375,6 +378,55 @@ namespace hcloud_api.Services
             {
                 Labels = firewall.Labels,
                 Name = firewall.Name
+            });
+        }
+
+        public async Task<Volume> GetVolume(int id)
+        {
+            var result = await client.GetJsonAsync<VolumeResponse>(Append(VolumePath, id));
+            return result.Volume;
+        }
+
+        public async Task<GetVolumesResponse> GetVolumes(string name = null, string labelSelector = null, VolumeSortQuery sort = null, VolumeStatusQuery status = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("status", status);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetVolumesResponse>(Append(VolumePath, query));
+        }
+
+        public async Task<CreateVolumeResponse> CreateVolume(CreateVolumeRequest request)
+        {
+            return await client.PostJsonAsync<CreateVolumeResponse>(VolumePath, request);
+        }
+
+        public async Task DeleteVolume(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(VolumePath, id));
+        }
+
+        public async Task DeleteVolume(Volume volume)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(VolumePath, volume.Id));
+        }
+
+        public async Task<Volume> UpdateVolume(int id, UpdateVolumeRequest request)
+        {
+            var result = await client.PutJsonAsync<VolumeResponse>(Append(VolumePath, id), request);
+            return result.Volume;
+        }
+
+        public async Task<Volume> UpdateVolume(Volume volume)
+        {
+            return await UpdateVolume(volume.Id, new UpdateVolumeRequest
+            {
+                Name = volume.Name,
+                Labels = volume.Labels
             });
         }
     }
