@@ -1,11 +1,14 @@
 ﻿using hcloud_api.Exceptions;
 using hcloud_api.Models.Objects;
+using hcloud_api.Models.Objects.Certificates;
+using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Requests.Volumes;
+using hcloud_api.Models.Responses.Certificates;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
 using hcloud_api.Models.Responses.Images;
@@ -503,5 +506,84 @@ namespace hcloud_api.Services
         /// <param name="volume"></param>
         /// <returns></returns>
         Task<Volume> UpdateVolume(Volume volume);
+
+
+        /// <summary>
+        /// Gets a specific Certificate object.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Certificate> GetCertificate(int id);
+
+        /// <summary>
+        /// Returns all Certificate objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="sort"></param>
+        /// <param name="type">The response will only contain Certificates matching the type.</param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<GetCertificatesResponse> GetCertificates(string name = null,
+            string labelSelector = null,
+            CertificateSortQuery sort = null,
+            CertificateType? type = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new Certificate.
+        /// <br/>
+        /// The default type <b>uploaded</b> allows for uploading your existing <b>certificate</b> and <b>private_key</b> in PEM format.
+        /// You have to monitor its expiration date and handle renewal yourself.
+        /// <br/>
+        /// In contrast, type <b>managed</b> requests a new Certificate from Let's Encrypt for the specified <b>domain_names</b>.
+        /// Only domains managed by Hetzner DNS are supported.
+        /// We handle renewal and timely alert the project owner via email if problems occur.
+        /// <br/>
+        /// For type <b>managed</b> Certificates the <b>action</b> key of the response contains the Action that allows for tracking the issuance process.
+        /// For type <b>uploaded</b> Certificates the <b>action</b> is always null.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<CreateCertificateResponse> CreateCertificate(CreateServerRequest request);
+
+        /// <summary>
+        /// Deletes a Certificate.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeleteCertificate(int id);
+
+        /// <summary>
+        /// Deletes a Certificate.
+        /// </summary>
+        /// <param name="certificate"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeleteCertificate(Certificate certificate);
+
+        /// <summary>
+        /// Updates the Certificate properties.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Certificate> UpdateCertificate(int id, UpdateCertificateRequest request);
+
+        /// <summary>
+        /// Updates the Certificate properties.
+        /// </summary>
+        /// <param name="certificate"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<Certificate> UpdateCertificate(Certificate certificate);
+
     }
 }

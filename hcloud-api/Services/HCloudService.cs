@@ -1,5 +1,11 @@
-﻿using hcloud_api.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using hcloud_api.Extensions;
 using hcloud_api.Models.Objects;
+using hcloud_api.Models.Objects.Certificates;
+using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
@@ -7,6 +13,7 @@ using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses;
+using hcloud_api.Models.Responses.Certificates;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
 using hcloud_api.Models.Responses.Images;
@@ -18,11 +25,6 @@ using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
 using hcloud_api.Models.Responses.Volumes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace hcloud_api.Services
 {
@@ -39,6 +41,7 @@ namespace hcloud_api.Services
         private const string NetworkPath = "networks";
         private const string FirewallPath = "firewalls";
         private const string VolumePath = "volumes";
+        private const string CertificatePath = "certificates";
 
         private readonly HttpClient client;
 
@@ -427,6 +430,55 @@ namespace hcloud_api.Services
             {
                 Name = volume.Name,
                 Labels = volume.Labels
+            });
+        }
+
+        public async Task<Certificate> GetCertificate(int id)
+        {
+            var result = await client.GetJsonAsync<CertificateResponse>(Append(CertificatePath, id));
+            return result.Certificate;
+        }
+
+        public async Task<GetCertificatesResponse> GetCertificates(string name = null, string labelSelector = null, CertificateSortQuery sort = null, CertificateType? type = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("type", type);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetCertificatesResponse>(Append(CertificatePath, query));
+        }
+
+        public async Task<CreateCertificateResponse> CreateCertificate(CreateServerRequest request)
+        {
+            return await client.PostJsonAsync<CreateCertificateResponse>(CertificatePath, request);
+        }
+
+        public async Task DeleteCertificate(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(CertificatePath, id));
+        }
+
+        public async Task DeleteCertificate(Certificate certificate)
+        {
+            await DeleteCertificate(certificate.Id);
+        }
+
+        public async Task<Certificate> UpdateCertificate(int id, UpdateCertificateRequest request)
+        {
+            var result = await client.PutJsonAsync<CertificateResponse>(Append(CertificatePath, id), request);
+            return result.Certificate;
+        }
+
+        public async Task<Certificate> UpdateCertificate(Certificate certificate)
+        {
+            return await UpdateCertificate(certificate.Id, new UpdateCertificateRequest
+            {
+                Labels = certificate.Labels,
+                Name = certificate.Name
             });
         }
     }

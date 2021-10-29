@@ -27,4 +27,14 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Models\Objects\Certificates\" />
+    <None Remove="Models\Requests\Certificates\" />
+    <None Remove="Models\Responses\Certificates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Objects\Certificates\" />
+    <Folder Include="Models\Requests\Certificates\" />
+    <Folder Include="Models\Responses\Certificates\" />
+  </ItemGroup>
 </Project>
