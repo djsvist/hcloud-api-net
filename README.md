@@ -20,6 +20,7 @@ At the moment, only CRUD operations (where possible) are implemented for the fol
 `Certificates`
 `SSH keys`
 `Placement Groups`
+`Floating IPs`
 
 ## Installation
 

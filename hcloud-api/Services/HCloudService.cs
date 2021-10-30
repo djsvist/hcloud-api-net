@@ -8,6 +8,7 @@ using hcloud_api.Models.Objects.Certificates;
 using hcloud_api.Models.Objects.PlacementGroups;
 using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
+using hcloud_api.Models.Requests.FloatingIPs;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
@@ -19,6 +20,7 @@ using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Certificates;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
+using hcloud_api.Models.Responses.FloatingIPs;
 using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
@@ -49,6 +51,7 @@ namespace hcloud_api.Services
         private const string CertificatePath = "certificates";
         private const string SSHKeyPath = "ssh_keys";
         private const string PlacementGroupPath = "placement_groups";
+        private const string FloatingIPPath = "floating_ips";
 
         private readonly HttpClient client;
 
@@ -585,6 +588,55 @@ namespace hcloud_api.Services
             {
                 Labels = group.Labels,
                 Name = group.Name
+            });
+        }
+
+        public async Task<FloatingIP> GetFloatingIP(int id)
+        {
+            var result = await client.GetJsonAsync<FloatingIPResponse>(Append(FloatingIPPath, id));
+            return result.FloatingIP;
+        }
+
+        public async Task<GetFloatingIPsResponse> GetFloatingIPs(string name = null, string labelSelector = null, FloatingIPSortQuery sort = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetFloatingIPsResponse>(Append(FloatingIPPath, query));
+        }
+
+        public async Task<CreateFloatingIPResponse> CreateFloatingIP(CreateFloatingIPRequset request)
+        {
+            return await client.PostJsonAsync<CreateFloatingIPResponse>(FloatingIPPath, request);
+        }
+
+        public async Task DeleteFloatingIP(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(FloatingIPPath, id));
+        }
+
+        public async Task DeleteFloatingIP(FloatingIP ip)
+        {
+            await DeleteFloatingIP(ip.Id);
+        }
+
+        public async Task<FloatingIP> UpdateFloatingIP(int id, UpdateFloatingIPRequest request)
+        {
+            var result = await client.PutJsonAsync<FloatingIPResponse>(Append(FloatingIPPath, id), request);
+            return result.FloatingIP;
+        }
+
+        public async Task<FloatingIP> UpdateFloatingIP(FloatingIP ip)
+        {
+            return await UpdateFloatingIP(ip.Id, new UpdateFloatingIPRequest
+            {
+                Labels = ip.Labels,
+                Name = ip.Name,
+                Description = ip.Description
             });
         }
     }

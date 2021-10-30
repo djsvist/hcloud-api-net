@@ -36,6 +36,9 @@
     <None Remove="Models\Objects\PlacementGroups\" />
     <None Remove="Models\Requests\PlacementGroups\" />
     <None Remove="Models\Responses\PlacementGroups\" />
+    <None Remove="Models\Objects\FloatingIPs\" />
+    <None Remove="Models\Requests\FloatingIPs\" />
+    <None Remove="Models\Responses\FloatingIPs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Objects\Certificates\" />
@@ -46,5 +49,8 @@
     <Folder Include="Models\Objects\PlacementGroups\" />
     <Folder Include="Models\Requests\PlacementGroups\" />
     <Folder Include="Models\Responses\PlacementGroups\" />
+    <Folder Include="Models\Objects\FloatingIPs\" />
+    <Folder Include="Models\Requests\FloatingIPs\" />
+    <Folder Include="Models\Responses\FloatingIPs\" />
   </ItemGroup>
 </Project>

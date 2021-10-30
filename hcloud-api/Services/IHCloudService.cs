@@ -4,6 +4,7 @@ using hcloud_api.Models.Objects.Certificates;
 using hcloud_api.Models.Objects.PlacementGroups;
 using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
+using hcloud_api.Models.Requests.FloatingIPs;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
@@ -14,6 +15,7 @@ using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses.Certificates;
 using hcloud_api.Models.Responses.Datacenters;
 using hcloud_api.Models.Responses.Firewalls;
+using hcloud_api.Models.Responses.FloatingIPs;
 using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
@@ -740,5 +742,74 @@ namespace hcloud_api.Services
         /// <returns></returns>
         /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<PlacementGroup> UpdatePlacementGroup(PlacementGroup group);
+
+
+        /// <summary>
+        /// Returns a specific Floating IP object.
+        /// </summary>
+        /// <param name="id">ID of the Floating IP</param>
+        /// <returns></returns>
+        Task<FloatingIP> GetFloatingIP(int id);
+
+        /// <summary>
+        /// Returns all Floating IP objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter Floating IPs by their name. The response will only contain the Floating IP matching the specified name.</param>
+        /// <param name="labelSelector">Can be used to filter Floating IPs by labels. The response will only contain Floating IPs matching the label selector.</param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetFloatingIPsResponse> GetFloatingIPs(string name = null,
+            string labelSelector = null,
+            FloatingIPSortQuery sort = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new Floating IP assigned to a Server.
+        /// <br/>If you want to create a Floating IP that is not bound to a Server, you need to provide the <b>home_location</b> key instead of <b>server</b>.
+        /// This can be either the ID or the name of the Location this IP shall be created in.
+        /// Note that a Floating IP can be assigned to a Server in any Location later on.
+        /// For optimal routing it is advised to use the Floating IP in the same Location it was created in.
+        /// </summary>
+        /// <param name="requset"></param>
+        /// <returns></returns>
+        Task<CreateFloatingIPResponse> CreateFloatingIP(CreateFloatingIPRequset request);
+
+        /// <summary>
+        /// Deletes a Floating IP. If it is currently assigned to a Server it will automatically get unassigned.
+        /// </summary>
+        /// <param name="id">ID of the Floating IP</param>
+        /// <returns></returns>
+        Task DeleteFloatingIP(int id);
+
+        /// <summary>
+        /// Deletes a Floating IP. If it is currently assigned to a Server it will automatically get unassigned.
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        Task DeleteFloatingIP(FloatingIP ip);
+
+        /// <summary>
+        /// Updates the description or labels of a Floating IP.
+        /// <br />
+        /// Also note that when updating labels, the Floating IP’s current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// </summary>
+        /// <param name="id">ID of the Floating IP</param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<FloatingIP> UpdateFloatingIP(int id, UpdateFloatingIPRequest request);
+
+        /// <summary>
+        /// Updates the description or labels of a Floating IP.
+        /// <br />
+        /// Also note that when updating labels, the Floating IP’s current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        Task<FloatingIP> UpdateFloatingIP(FloatingIP ip);
     }
 }
