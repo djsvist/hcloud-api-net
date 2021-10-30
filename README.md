@@ -18,6 +18,7 @@ At the moment, only CRUD operations (where possible) are implemented for the fol
 `Firewalls`
 `Volumes`
 `Certificates`
+`SSH keys`
 
 ## Installation
 

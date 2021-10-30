@@ -31,10 +31,14 @@
     <None Remove="Models\Objects\Certificates\" />
     <None Remove="Models\Requests\Certificates\" />
     <None Remove="Models\Responses\Certificates\" />
+    <None Remove="Models\Requests\SSHKeys\" />
+    <None Remove="Models\Responses\SSHKeys\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Objects\Certificates\" />
     <Folder Include="Models\Requests\Certificates\" />
     <Folder Include="Models\Responses\Certificates\" />
+    <Folder Include="Models\Requests\SSHKeys\" />
+    <Folder Include="Models\Responses\SSHKeys\" />
   </ItemGroup>
 </Project>

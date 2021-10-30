@@ -11,6 +11,7 @@ using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
+using hcloud_api.Models.Requests.SSHKeys;
 using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Certificates;
@@ -24,6 +25,7 @@ using hcloud_api.Models.Responses.Locations;
 using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
+using hcloud_api.Models.Responses.SSHKeys;
 using hcloud_api.Models.Responses.Volumes;
 
 namespace hcloud_api.Services
@@ -42,6 +44,7 @@ namespace hcloud_api.Services
         private const string FirewallPath = "firewalls";
         private const string VolumePath = "volumes";
         private const string CertificatePath = "certificates";
+        private const string SSHKeyPath = "ssh_keys";
 
         private readonly HttpClient client;
 
@@ -479,6 +482,56 @@ namespace hcloud_api.Services
             {
                 Labels = certificate.Labels,
                 Name = certificate.Name
+            });
+        }
+
+        public async Task<SSHKey> GetSSHKey(int id)
+        {
+            var result = await client.GetJsonAsync<SSHKeyResponse>(Append(SSHKeyPath, id));
+            return result.Key;
+        }
+
+        public async Task<GetSSHKeysResponse> GetSSHKeys(string name = null, string labelSelector = null, string fingerprint = null, SSHKeySortQuery sort = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("fingerprint", fingerprint);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetSSHKeysResponse>(Append(SSHKeyPath, query));
+        }
+
+        public async Task<SSHKey> CreateSSHKey(CreateSSHKeyRequest request)
+        {
+            var result = await client.PostJsonAsync<SSHKeyResponse>(SSHKeyPath, request);
+            return result.Key;
+        }
+
+        public async Task DeleteSSHKey(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(SSHKeyPath, id));
+        }
+
+        public async Task DeleteSSHKey(SSHKey key)
+        {
+            await DeleteSSHKey(key.Id);
+        }
+
+        public async Task<SSHKey> UpdateSSHKey(int id, UpdateSSHKeyRequest request)
+        {
+            var result = await client.PutJsonAsync<SSHKeyResponse>(Append(SSHKeyPath, id), request);
+            return result.Key;
+        }
+
+        public async Task<SSHKey> UpdateSSHKey(SSHKey key)
+        {
+            return await UpdateSSHKey(key.Id, new UpdateSSHKeyRequest
+            {
+                Labels = key.Labels,
+                Name = key.Name
             });
         }
     }

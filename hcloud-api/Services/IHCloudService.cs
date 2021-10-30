@@ -7,6 +7,7 @@ using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
 using hcloud_api.Models.Requests.Servers;
+using hcloud_api.Models.Requests.SSHKeys;
 using hcloud_api.Models.Requests.Volumes;
 using hcloud_api.Models.Responses.Certificates;
 using hcloud_api.Models.Responses.Datacenters;
@@ -16,6 +17,7 @@ using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.Networks;
 using hcloud_api.Models.Responses.Servers;
+using hcloud_api.Models.Responses.SSHKeys;
 using hcloud_api.Models.Responses.Volumes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -585,5 +587,71 @@ namespace hcloud_api.Services
         /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<Certificate> UpdateCertificate(Certificate certificate);
 
+
+        /// <summary>
+        /// Returns a specific SSH key object.
+        /// </summary>
+        /// <param name="id">ID of the SSH key</param>
+        /// <returns></returns>
+        Task<SSHKey> GetSSHKey(int id);
+
+        /// <summary>
+        /// Returns all SSH key objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="fingerprint">Can be used to filter SSH keys by their fingerprint. The response will only contain the SSH key matching the specified fingerprint.</param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetSSHKeysResponse> GetSSHKeys(string name = null,
+            string labelSelector = null,
+            string fingerprint = null,
+            SSHKeySortQuery sort = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new SSH key with the given <b>name</b> and <b>public_key</b>.
+        /// Once an SSH key is created, it can be used in other calls such as creating Servers.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<SSHKey> CreateSSHKey(CreateSSHKeyRequest request);
+
+        /// <summary>
+        /// Deletes an SSH key. It cannot be used anymore.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task DeleteSSHKey(int id);
+
+        /// <summary>
+        /// Deletes an SSH key. It cannot be used anymore.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task DeleteSSHKey(SSHKey key);
+
+        /// <summary>
+        /// Updates an SSH key. You can update an SSH key name and an SSH key labels.
+        /// <br/>Please note that when updating labels, the SSH key current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<SSHKey> UpdateSSHKey(int id, UpdateSSHKeyRequest request);
+
+        /// <summary>
+        /// Updates an SSH key. You can update an SSH key name and an SSH key labels.
+        /// <br/>
+        /// Please note that when updating labels, the SSH key current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<SSHKey> UpdateSSHKey(SSHKey key);
     }
 }
