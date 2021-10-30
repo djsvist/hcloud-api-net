@@ -1,11 +1,13 @@
 ﻿using hcloud_api.Exceptions;
 using hcloud_api.Models.Objects;
 using hcloud_api.Models.Objects.Certificates;
+using hcloud_api.Models.Objects.PlacementGroups;
 using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
+using hcloud_api.Models.Requests.PlacementGroups;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Requests.SSHKeys;
 using hcloud_api.Models.Requests.Volumes;
@@ -16,6 +18,7 @@ using hcloud_api.Models.Responses.Images;
 using hcloud_api.Models.Responses.ISOs;
 using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.Networks;
+using hcloud_api.Models.Responses.PlacementGroups;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.SSHKeys;
 using hcloud_api.Models.Responses.Volumes;
@@ -605,6 +608,7 @@ namespace hcloud_api.Services
         /// <param name="page"></param>
         /// <param name="perPage"></param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<GetSSHKeysResponse> GetSSHKeys(string name = null,
             string labelSelector = null,
             string fingerprint = null,
@@ -618,13 +622,15 @@ namespace hcloud_api.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<SSHKey> CreateSSHKey(CreateSSHKeyRequest request);
 
         /// <summary>
         /// Deletes an SSH key. It cannot be used anymore.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of the resource</param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task DeleteSSHKey(int id);
 
         /// <summary>
@@ -632,6 +638,7 @@ namespace hcloud_api.Services
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task DeleteSSHKey(SSHKey key);
 
         /// <summary>
@@ -639,9 +646,10 @@ namespace hcloud_api.Services
         /// <br/>Please note that when updating labels, the SSH key current set of labels will be replaced with the labels provided in the request body.
         /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of the resource</param>
         /// <param name="request"></param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<SSHKey> UpdateSSHKey(int id, UpdateSSHKeyRequest request);
 
         /// <summary>
@@ -652,6 +660,85 @@ namespace hcloud_api.Services
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<SSHKey> UpdateSSHKey(SSHKey key);
+
+
+        /// <summary>
+        /// Gets a specific PlacementGroup object.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<PlacementGroup> GetPlacementGroup(int id);
+
+        /// <summary>
+        /// Returns all PlacementGroup objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="type">The response will only contain PlacementGroups matching the type.</param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<GetPlacementGroupsResponse> GetPlacementGroups(string name = null,
+            string labelSelector = null,
+            PlacementGroupType? type = null,
+            PlacementGroupSortQuery sort = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new PlacementGroup.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<CreatePlacementGroupResponse> CreatePlacementGroup(CreatePlacementGroupRequest request);
+
+        /// <summary>
+        /// Deletes a PlacementGroup.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeletePlacementGroup(int id);
+
+        /// <summary>
+        /// Deletes a PlacementGroup.
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task DeletePlacementGroup(PlacementGroup group);
+
+        /// <summary>
+        /// Updates the PlacementGroup properties.
+        /// <br/>
+        /// Note that when updating labels, the PlacementGroup’s current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// <br />
+        /// Note: if the PlacementGroup object changes during the request, the response will be a “conflict” error.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<PlacementGroup> UpdatePlacementGroup(int id, UpdatePlacementGroupRequest request);
+
+        /// <summary>
+        /// Updates the PlacementGroup properties.
+        /// <br/>
+        /// Note that when updating labels, the PlacementGroup’s current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+        /// <br />
+        /// Note: if the PlacementGroup object changes during the request, the response will be a “conflict” error.
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
+        Task<PlacementGroup> UpdatePlacementGroup(PlacementGroup group);
     }
 }

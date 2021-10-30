@@ -30,7 +30,7 @@ namespace hcloud_api.Models.Objects
         /// Certificate and chain in PEM format, in order so that each record directly certifies the one preceding
         /// </summary>
         [JsonProperty("certificate")]
-        public string Sertificate { get; set; }
+        public string CertificateString { get; set; }
 
         /// <summary>
         /// Point in time when the Resource was created (in ISO-8601 format)

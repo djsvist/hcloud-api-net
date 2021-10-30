@@ -33,6 +33,9 @@
     <None Remove="Models\Responses\Certificates\" />
     <None Remove="Models\Requests\SSHKeys\" />
     <None Remove="Models\Responses\SSHKeys\" />
+    <None Remove="Models\Objects\PlacementGroups\" />
+    <None Remove="Models\Requests\PlacementGroups\" />
+    <None Remove="Models\Responses\PlacementGroups\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Objects\Certificates\" />
@@ -40,5 +43,8 @@
     <Folder Include="Models\Responses\Certificates\" />
     <Folder Include="Models\Requests\SSHKeys\" />
     <Folder Include="Models\Responses\SSHKeys\" />
+    <Folder Include="Models\Objects\PlacementGroups\" />
+    <Folder Include="Models\Requests\PlacementGroups\" />
+    <Folder Include="Models\Responses\PlacementGroups\" />
   </ItemGroup>
 </Project>

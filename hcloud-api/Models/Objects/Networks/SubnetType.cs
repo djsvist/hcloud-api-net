@@ -13,10 +13,10 @@ namespace hcloud_api.Models.Objects.Networks
         [EnumMember(Value = "cloud")]
         Cloud,
 
-        //[EnumMember(Value = "server")]
+        [EnumMember(Value = "server")]
         Server,
 
-        //[EnumMember(Value = "vswitch")]
+        [EnumMember(Value = "vswitch")]
         VSwitch
     }
 }

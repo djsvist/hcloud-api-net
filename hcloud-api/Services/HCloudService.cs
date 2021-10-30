@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using hcloud_api.Extensions;
 using hcloud_api.Models.Objects;
 using hcloud_api.Models.Objects.Certificates;
+using hcloud_api.Models.Objects.PlacementGroups;
 using hcloud_api.Models.Requests.Certificates;
 using hcloud_api.Models.Requests.Firewalls;
 using hcloud_api.Models.Requests.Images;
 using hcloud_api.Models.Requests.LoadBalancers;
 using hcloud_api.Models.Requests.Networks;
+using hcloud_api.Models.Requests.PlacementGroups;
 using hcloud_api.Models.Requests.Servers;
 using hcloud_api.Models.Requests.SSHKeys;
 using hcloud_api.Models.Requests.Volumes;
@@ -23,6 +25,7 @@ using hcloud_api.Models.Responses.LoadBalancers;
 using hcloud_api.Models.Responses.LoadBalancerTypes;
 using hcloud_api.Models.Responses.Locations;
 using hcloud_api.Models.Responses.Networks;
+using hcloud_api.Models.Responses.PlacementGroups;
 using hcloud_api.Models.Responses.Servers;
 using hcloud_api.Models.Responses.ServerTypes;
 using hcloud_api.Models.Responses.SSHKeys;
@@ -45,6 +48,7 @@ namespace hcloud_api.Services
         private const string VolumePath = "volumes";
         private const string CertificatePath = "certificates";
         private const string SSHKeyPath = "ssh_keys";
+        private const string PlacementGroupPath = "placement_groups";
 
         private readonly HttpClient client;
 
@@ -532,6 +536,55 @@ namespace hcloud_api.Services
             {
                 Labels = key.Labels,
                 Name = key.Name
+            });
+        }
+
+        public async Task<PlacementGroup> GetPlacementGroup(int id)
+        {
+            var result = await client.GetJsonAsync<PlacementGroupResponse>(Append(PlacementGroupPath, id));
+            return result.Group;
+        }
+
+        public async Task<GetPlacementGroupsResponse> GetPlacementGroups(string name = null, string labelSelector = null, PlacementGroupType? type = null, PlacementGroupSortQuery sort = null, int? page = null, int? perPage = null)
+        {
+            var query = new Dictionary<string, object>();
+            query.AddNotNull("name", name);
+            query.AddNotNull("label_selector", labelSelector);
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("type", type);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetPlacementGroupsResponse>(Append(PlacementGroupPath, query));
+        }
+
+        public async Task<CreatePlacementGroupResponse> CreatePlacementGroup(CreatePlacementGroupRequest request)
+        {
+            return await client.PostJsonAsync<CreatePlacementGroupResponse>(PlacementGroupPath, request);
+        }
+
+        public async Task DeletePlacementGroup(int id)
+        {
+            await client.DeleteJsonAsync<IResponse>(Append(PlacementGroupPath, id));
+        }
+
+        public async Task DeletePlacementGroup(PlacementGroup group)
+        {
+            await DeletePlacementGroup(group.Id);
+        }
+
+        public async Task<PlacementGroup> UpdatePlacementGroup(int id, UpdatePlacementGroupRequest request)
+        {
+            var result = await client.PutJsonAsync<PlacementGroupResponse>(Append(PlacementGroupPath, id), request);
+            return result.Group;
+        }
+
+        public async Task<PlacementGroup> UpdatePlacementGroup(PlacementGroup group)
+        {
+            return await UpdatePlacementGroup(group.Id, new UpdatePlacementGroupRequest
+            {
+                Labels = group.Labels,
+                Name = group.Name
             });
         }
     }
