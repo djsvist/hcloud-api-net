@@ -21,6 +21,14 @@ namespace hcloud_api.Extensions
             return DeserializeAndThrow<T>(responseStr);
         }
 
+        public static async Task<T> PostJsonAsync<T>(this HttpClient client, string requestUri) where T : IResponse
+        {
+            var response = await client.PostAsync(requestUri, null);
+            var responseStr = await response.Content.ReadAsStringAsync();
+
+            return DeserializeAndThrow<T>(responseStr);
+        }
+
         public static async Task<T> PutJsonAsync<T>(this HttpClient client, string requestUri, object data) where T : IResponse
         {
             var content = new StringContent(

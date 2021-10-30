@@ -39,6 +39,7 @@
     <None Remove="Models\Objects\FloatingIPs\" />
     <None Remove="Models\Requests\FloatingIPs\" />
     <None Remove="Models\Responses\FloatingIPs\" />
+    <None Remove="Services\Actions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Objects\Certificates\" />
@@ -52,5 +53,6 @@
     <Folder Include="Models\Objects\FloatingIPs\" />
     <Folder Include="Models\Requests\FloatingIPs\" />
     <Folder Include="Models\Responses\FloatingIPs\" />
+    <Folder Include="Services\Actions\" />
   </ItemGroup>
 </Project>

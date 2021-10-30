@@ -39,6 +39,7 @@ You can use parameter object, id or name on creating request
 using hcloud_api.Services;
 
 private readonly IHCloudService service;
+private readonly IServerActionsService serverActions;
 
 var serverTypes = await service.GetServerTypes(name: "cx11");
 
@@ -53,5 +54,8 @@ var request = new CreateServerRequest()
 };
 
 var response = await service.CreateServer(request);
+var server = response.Server;
+
+var action = await serverActions.PowerOn(server.Id);
 ```
 All methods throw an `hcloud_api.Exceptions.HCloudException` if an error field is present in the response from the server
