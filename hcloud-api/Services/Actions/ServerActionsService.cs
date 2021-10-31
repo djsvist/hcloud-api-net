@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using hcloud_api.Extensions;
@@ -21,109 +22,174 @@ namespace hcloud_api.Services.Actions
             this.client = client;
         }
 
-        public Task<HAction> AddToPlacementGroup(int serverId, int groupId)
+        public async Task<HAction> AddToPlacementGroup(int serverId, int groupId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/add_to_placement_group", new
+            {
+                placement_group = groupId
+            });
+            return result.Action;
         }
 
-        public Task<HAction> AddToPlacementGroup(int serverId, PlacementGroup group)
+        public async Task<HAction> AddToPlacementGroup(int serverId, PlacementGroup group)
         {
-            throw new System.NotImplementedException();
+            return await AddToPlacementGroup(serverId, group.Id);
         }
 
-        public Task<HAction> AttachISO(int serverId, int isoId)
+        public async Task<HAction> AttachISO(int serverId, int isoId)
         {
-            throw new System.NotImplementedException();
+            return await AttachISO(serverId, isoId.ToString());
         }
 
-        public Task<HAction> AttachISO(int serverId, string isoName)
+        public async Task<HAction> AttachISO(int serverId, string isoName)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/attach_iso", new
+            {
+                iso = isoName
+            });
+            return result.Action;
         }
 
-        public Task<HAction> AttachISO(int serverId, ISO iso)
+        public async Task<HAction> AttachISO(int serverId, ISO iso)
         {
-            throw new System.NotImplementedException();
+            return await AttachISO(serverId, iso.Id.ToString());
         }
 
-        public Task<HAction> AttachToNetwork(int serverId, int networkId, string ip = null, IEnumerable<string> aliasIps = null)
+        public async Task<HAction> AttachToNetwork(int serverId, int networkId, string ip = null, IEnumerable<string> aliasIps = null)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/attach_to_network", new AttachToNetworkRequest
+            {
+                AliasIPs = aliasIps,
+                IP = ip,
+                Network = networkId
+            });
+            return result.Action;
         }
 
-        public Task<HAction> AttachToNetwork(int serverId, Network network, string ip = null, IEnumerable<string> aliasIps = null)
+        public async Task<HAction> AttachToNetwork(int serverId, Network network, string ip = null, IEnumerable<string> aliasIps = null)
         {
-            throw new System.NotImplementedException();
+            return await AttachToNetwork(serverId, network.Id, ip, aliasIps);
         }
 
-        public Task<HAction> ChangeAliasIPs(int serverId, int networkId, IEnumerable<string> aliasIps)
+        public async Task<HAction> ChangeAliasIPs(int serverId, int networkId, IEnumerable<string> aliasIps)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_alias_ips", new
+            {
+                network = networkId,
+                alias_ips = aliasIps
+            });
+            return result.Action;
         }
 
-        public Task<HAction> ChangeAliasIPs(int serverId, Network network, IEnumerable<string> aliasIps)
+        public async Task<HAction> ChangeAliasIPs(int serverId, Network network, IEnumerable<string> aliasIps)
         {
-            throw new System.NotImplementedException();
+            return await ChangeAliasIPs(serverId, network.Id, aliasIps);
         }
 
-        public Task<HAction> ChangeProtection(int serverId, bool? protectDelete = null, bool? protectRebuild = null)
+        public async Task<HAction> ChangeProtection(int serverId, bool? protectDelete = null, bool? protectRebuild = null)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_protection", new ChangeProtectionRequest
+            {
+                ProtectDelete = protectDelete,
+                ProtectRebuild = protectRebuild
+            });
+            return result.Action;
         }
 
-        public Task<HAction> ChangeReverseDNS(int serverId, string ip, string dnsPointer)
+        public async Task<HAction> ChangeReverseDNS(int serverId, string ip, string dnsPointer)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_dns_ptr", new
+            {
+                ip,
+                dns_ptr = dnsPointer
+            });
+            return result.Action;
         }
 
-        public Task<HAction> ChangeType(int serverId, string typeName, bool upgradeDisk)
+        public async Task<HAction> ChangeType(int serverId, string typeName, bool upgradeDisk)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_type", new
+            {
+                server_type = typeName,
+                upgrade_disk = upgradeDisk
+            });
+            return result.Action;
         }
 
-        public Task<CreateImageResponse> CreateImage(int serverId, string description = null, Dictionary<string, string> labels = null, ImageType? type = null)
+        public async Task<CreateImageResponse> CreateImage(int serverId, string description = null, Dictionary<string, string> labels = null, ImageType? type = null)
         {
-            throw new System.NotImplementedException();
+            type = type switch
+            {
+                ImageType.Snapshot or ImageType.Backup or null => type,
+                _ => throw new ArgumentException("Image type can be Snapshot or Backup", nameof(type))
+            };
+
+            return await client.PostJsonAsync<CreateImageResponse>($"servers/{serverId}/actions/create_image", new CreateImageRequest
+            {
+                Description = description,
+                Labels = labels,
+                Type = type
+            });
         }
 
-        public Task<HAction> DetachFromNetwork(int serverId, int networkId)
+        public async Task<HAction> DetachFromNetwork(int serverId, int networkId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/detach_from_network", new
+            {
+                network = networkId
+            });
+            return result.Action;
         }
 
-        public Task<HAction> DetachISO(int serverId)
+        public async Task<HAction> DetachISO(int serverId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/detach_iso");
+            return result.Action;
         }
 
-        public Task<HAction> DisableBackups(int serverId)
+        public async Task<HAction> DisableBackups(int serverId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/disable_backup");
+            return result.Action;
         }
 
-        public Task<HAction> DisableRescue(int serverId)
+        public async Task<HAction> DisableRescue(int serverId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/disable_rescue");
+            return result.Action;
         }
 
-        public Task<HAction> EnableBackups(int serverId)
+        public async Task<HAction> EnableBackups(int serverId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/enable_backup");
+            return result.Action;
         }
 
-        public Task<EnableRescueResponse> EnableRescue(int serverId, IEnumerable<int> sshKeys = null, RescueType? type = null)
+        public async Task<EnableRescueResponse> EnableRescue(int serverId, IEnumerable<int> sshKeys = null, RescueType? type = null)
         {
-            throw new System.NotImplementedException();
+            return await client.PostJsonAsync<EnableRescueResponse>($"servers/{serverId}/actions/enable_rescue", new EnableRescueRequest
+            {
+                SSHKeys = sshKeys,
+                Type = type
+            });
         }
 
-        public Task<HAction> GetAction(int serverId, int actionId)
+        public async Task<HAction> GetAction(int serverId, int actionId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.GetJsonAsync<ActionResponse>($"servers/{serverId}/actions/{actionId}");
+            return result.Action;
         }
 
-        public Task<GetActionsResponse> GetActions(int serverId, ActionSortQuery sort = null, ActionStatus? status = null, int? page = null, int? perPage = null)
+        public async Task<GetActionsResponse> GetActions(int serverId, ActionSortQuery sort = null, ActionStatus? status = null, int? page = null, int? perPage = null)
         {
-            throw new System.NotImplementedException();
+            var query = new Dictionary<string, object>();
+
+            query.AddNotNull("sort", sort);
+            query.AddNotNull("status", status);
+            query.AddNotNull("page", page);
+            query.AddNotNull("per_page", perPage);
+
+            return await client.GetJsonAsync<GetActionsResponse>($"servers/{serverId}/actions?" + query.ToQuery());
         }
 
         public async Task<HAction> PowerOff(int id)
@@ -144,19 +210,23 @@ namespace hcloud_api.Services.Actions
             return result.Action;
         }
 
-        public Task<RebuildServerResponse> Rebuild(int id, string imageName)
+        public async Task<RebuildServerResponse> Rebuild(int id, string imageName)
         {
-            throw new System.NotImplementedException();
+            return  await client.PostJsonAsync<RebuildServerResponse>($"servers/{id}/actions/rebuild", new
+            {
+                image = imageName
+            });
         }
 
-        public Task<HAction> RemoveFromPlacementGroup(int serverId)
+        public async Task<HAction> RemoveFromPlacementGroup(int serverId)
         {
-            throw new System.NotImplementedException();
+            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/remove_from_placement_group");
+            return result.Action;
         }
 
-        public Task<RequestConsoleResponse> RequestConsole(int serverId)
+        public async Task<RequestConsoleResponse> RequestConsole(int serverId)
         {
-            throw new System.NotImplementedException();
+            return await client.PostJsonAsync<RequestConsoleResponse>($"servers/{serverId}/actions/request_console");
         }
 
         public async Task<HAction> Reset(int id)
@@ -165,9 +235,9 @@ namespace hcloud_api.Services.Actions
             return result.Action;
         }
 
-        public Task<ResetPasswordResponse> ResetPassword(int serverId)
+        public async Task<ResetPasswordResponse> ResetPassword(int serverId)
         {
-            throw new System.NotImplementedException();
+            return await client.PostJsonAsync<ResetPasswordResponse>($"servers/{serverId}/actions/reset_password");
         }
 
         public async Task<HAction> Shutdown(int id)

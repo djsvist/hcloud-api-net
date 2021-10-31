@@ -2,6 +2,7 @@
 using hcloud_api.Models.Responses;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,17 @@ namespace hcloud_api.Extensions
         {
             if (value != null)
                 dictionary.Add(key, value);
+        }
+
+        public static string ToQuery(this Dictionary<string, object> query)
+        {
+            return query.Aggregate(string.Empty, (p, pair) =>
+            {
+                if (!p.EndsWith("?"))
+                    p += "&";
+
+                return p + $"{pair.Key}={pair.Value}";
+            });
         }
     }
 }
