@@ -118,11 +118,8 @@ namespace hcloud_api.Services.Actions
 
         public async Task<CreateImageResponse> CreateImage(int serverId, string description = null, Dictionary<string, string> labels = null, ImageType? type = null)
         {
-            type = type switch
-            {
-                ImageType.Snapshot or ImageType.Backup or null => type,
-                _ => throw new ArgumentException("Image type can be Snapshot or Backup", nameof(type))
-            };
+            if (type != ImageType.Backup && type != ImageType.Snapshot && type != null)
+                throw new ArgumentException("Image type can be Snapshot or Backup", nameof(type));
 
             return await client.PostJsonAsync<CreateImageResponse>($"servers/{serverId}/actions/create_image", new CreateImageRequest
             {
