@@ -8,9 +8,9 @@ namespace hcloud_api.Models.Objects.Certificates
     public enum CertificateType
     {
         [EnumMember(Value = "uploaded")]
-        uploaded,
+        Uploaded,
 
         [EnumMember(Value = "managed")]
-        managed
+        Managed
     }
 }

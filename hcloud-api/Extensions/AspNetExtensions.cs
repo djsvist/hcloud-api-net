@@ -7,21 +7,19 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class AspNetExtensions
     {
+        private const string clientName = "hcloud-api-net";
+
         public static IServiceCollection UseHCloudAPI(this IServiceCollection services, string token, string baseUri = "https://api.hetzner.cloud/v1/")
         {
-            services.AddHttpClient<IHCloudService, HCloudService>(c =>
+            services.AddHttpClient(clientName, c =>
             {
                 c.BaseAddress = new Uri(baseUri);
                 c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                c.DefaultRequestHeaders.Add("User-Agent", "hcloud-api-net");
+                c.DefaultRequestHeaders.Add("User-Agent", clientName);
             });
 
-            services.AddHttpClient<IServerActionsService, ServerActionsService>(c =>
-            {
-                c.BaseAddress = new Uri(baseUri);
-                c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                c.DefaultRequestHeaders.Add("User-Agent", "hcloud-api-net");
-            });
+            services.AddHttpClient<IHCloudService, HCloudService>(clientName);
+            services.AddHttpClient<IServerActionsService, ServerActionsService>(clientName);
 
             return services;
         }
