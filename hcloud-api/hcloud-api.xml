@@ -4,6 +4,81 @@
         <name>hcloud-api</name>
     </assembly>
     <members>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.CertificateString">
+            <summary>
+            Certificate and chain in PEM format, in order so that each record directly certifies the one preceding
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Created">
+            <summary>
+            Point in time when the Resource was created (in ISO-8601 format)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.DomainNames">
+            <summary>
+            Domains and subdomains covered by the Certificate
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.FingerPrint">
+            <summary>
+            SHA256 fingerprint of the Certificate
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.NotValidAfter">
+            <summary>
+            Point in time when the Certificate stops being valid (in ISO-8601 format)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.NotValidBefore">
+            <summary>
+            Point in time when the Certificate becomes valid (in ISO-8601 format)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Status">
+            <summary>
+            Current status of a type <b>managed</b> Certificate, always null for type <b>uploaded</b> Certificates
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.Type">
+            <summary>
+            Type of the Certificate
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificate.UsedBy">
+            <summary>
+            Resources currently using the Certificate
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificates.CertificateStatus.Error">
+            <summary>
+            If issuance or renewal reports <b>failed</b>, this property contains information about what happened
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificates.CertificateStatus.Issuance">
+            <summary>
+            Status of the issuance process of the Certificate
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.Certificates.CertificateStatus.Renewal">
+            <summary>
+            Status of the renewal process of the Certificate.
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Objects.Datacenter.Id">
             <summary>
             ID of the Resource
@@ -112,6 +187,76 @@
             <summary>
             List of permitted IPv4/IPv6 addresses in CIDR notation.
             Use <b>0.0.0.0/0</b> to allow all IPv4 addresses and <b>::/0</b> to allow all IPv6 addresses. You can specify 100 CIDRs at most.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Blocked">
+            <summary>
+            Whether the IP is blocked
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Created">
+            <summary>
+            Point in time when the Resource was created
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Description">
+            <summary>
+            Description of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.DNSPointers">
+            <summary>
+            Array of reverse DNS entries
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Location">
+            <summary>
+            Location the Floating IP was created in. Routing is optimized for this Location.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.IP">
+            <summary>
+            IP address
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Protection">
+            <summary>
+            Protection configuration for the Server
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Server">
+            <summary>
+            ID of the Server the Floating IP is assigned to, null if it is not assigned at all
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIP.Type">
+            <summary>
+            Type of the Floating IP
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIPs.DNSPointer.Pointer">
+            <summary>
+            DNS pointer for the specific IP address
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.FloatingIPs.DNSPointer.IP">
+            <summary>
+            Single IPv4 or IPv6 address
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Objects.HAction.Id">
@@ -712,6 +857,36 @@
             Type of Subnetwork
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Created">
+            <summary>
+            Point in time when the Resource was created (in ISO-8601 format)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Servers">
+            <summary>
+            Array of IDs of Servers that are part of this Placement Group
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.PlacementGroup.Type">
+            <summary>
+            Type of the Placement Group
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Objects.Server.Id">
             <summary>
             ID of the Resource
@@ -963,12 +1138,12 @@
             Monthly costs for a Server type in this Location
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Objects.Shared.Price.PriceDetail.Gross">
+        <member name="P:hcloud_api.Models.Objects.Shared.PriceDetail.Gross">
             <summary>
             Price with VAT added
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Objects.Shared.Price.PriceDetail.Net">
+        <member name="P:hcloud_api.Models.Objects.Shared.PriceDetail.Net">
             <summary>
             Price without VAT
             </summary>
@@ -991,6 +1166,36 @@
         <member name="P:hcloud_api.Models.Objects.Shared.Resource.Type">
             <summary>
             Type of resource referenced
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.Id">
+            <summary>
+            ID of the Resource
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.Created">
+            <summary>
+            Point in time when the Resource was created (in ISO-8601 format)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.Fingerprint">
+            <summary>
+            Fingerprint of public key
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Objects.SSHKey.PublicKey">
+            <summary>
+            Public key
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Objects.Volume.Id">
@@ -1048,6 +1253,55 @@
             Current status of the Volume
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.Name">
+            <summary>
+            Name of the Resource. Must be unique per Project
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.Labels">
+            <summary>
+            User-defined labels
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.Certificate">
+            <summary>
+            Certificate and chain in PEM format, in order so that each record directly certifies the one preceding.
+            <br/>
+            Required for type <b>uploaded</b> Certificates.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.DomainNames">
+            <summary>
+            Domains and subdomains that should be contained in the Certificate issued by Let's Encrypt.
+            <br/>
+            Required for type <b>managed</b> Certificates.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.PrivateKey">
+            <summary>
+            Certificate key in PEM format.
+            <br/>
+            Required for type <b>uploaded</b> Certificates.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.CreateCertificateRequest.Type">
+            <summary>
+            Choose between uploading a Certificate in PEM format or requesting a managed Let's Encrypt Certificate.
+            <br/>
+            If omitted defaults to <b>uploaded</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.UpdateCertificateRequest.Name">
+            <summary>
+            New certificate name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Certificates.UpdateCertificateRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Name">
             <summary>
             Name of the Resource. Must be unique per Project
@@ -1070,6 +1324,181 @@
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Name">
+            <summary>
+            Name of the IP to create
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Location">
+            <summary>
+            Home Location (routing is optimized for that Location).
+            <br /><b>Only optional if Server argument is passed.</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.LocationName">
+            <summary>
+            Home Location Name (routing is optimized for that Location).
+            <br /><b>Only optional if Server argument is passed.</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.LocationId">
+            <summary>
+            Home Location ID (routing is optimized for that Location).
+            <br /><b>Only optional if Server argument is passed.</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Server">
+            <summary>
+            Server to assign the Floating IP to
+            <br /><b>Only optional if Location argument is passed.</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Type">
+            <summary>
+            Floating IP type
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.UpdateFloatingIPRequest.Name">
+            <summary>
+            New floating ip name
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.UpdateFloatingIPRequest.Description">
+            <summary>
+            New Description to set
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.UpdateFloatingIPRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Automount">
+            <summary>
+            Auto-mount Volumes after attach
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Datacenter">
+            <summary>
+            Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterId">
+            <summary>
+            ID of Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterName">
+            <summary>
+            Name of Datacenter to create Server in (must not be used together with location)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Firewalls">
+            <summary>
+            Firewalls which should be applied on the Server's public network interface at creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Image">
+            <summary>
+            Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageId">
+            <summary>
+            ID of the Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageName">
+            <summary>
+            Name of the Image the Server is created from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Labels">
+            <summary>
+            User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Location">
+            <summary>
+            Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationId">
+            <summary>
+            ID of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationName">
+            <summary>
+            Name of Location to create Server in (must not be used together with datacenter)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Name">
+            <summary>
+            Name of the Server to create (must be unique per Project and a valid hostname as per RFC 1123)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Networks">
+            <summary>
+            Network IDs which should be attached to the Server private network interface at the creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerType">
+            <summary>
+            Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeId">
+            <summary>
+            ID of the Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeName">
+            <summary>
+            Name of the Server type this Server should be created with
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.SSHKeys">
+            <summary>
+            SSH key IDs (integer) or names (string) which should be injected into the Server at creation time
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.StartAfterCreate">
+            <summary>
+            Start Server right after creation. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.UserData">
+            <summary>
+            Cloud-Init user data to use during Server creation. This field is limited to 32KiB.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Volumes">
+            <summary>
+            Volume IDs which should be attached to the Server at the creation time.
+            Volumes must be in the same Location.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.FirewallId.Firewall">
+            <summary>
+            ID of the Firewall
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Name">
+            <summary>
+            New name to set
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Labels">
             <summary>
             User-defined labels (key-value pairs)
             </summary>
@@ -1199,123 +1628,58 @@
             User-defined labels (key-value pairs)
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Automount">
+        <member name="P:hcloud_api.Models.Requests.PlacementGroups.CreatePlacementGroupRequest.Name">
             <summary>
-            Auto-mount Volumes after attach
+            Name of the PlacementGroup
+            <br><b>Required field</b></br>
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Datacenter">
+        <member name="P:hcloud_api.Models.Requests.PlacementGroups.CreatePlacementGroupRequest.Labels">
             <summary>
-            Datacenter to create Server in (must not be used together with location)
+            User-defined labels
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterId">
+        <member name="P:hcloud_api.Models.Requests.PlacementGroups.CreatePlacementGroupRequest.Type">
             <summary>
-            ID of Datacenter to create Server in (must not be used together with location)
+            Define the Placement Group Type.
+            <br/>
+            <b>Required field</b>
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.DatacenterName">
+        <member name="P:hcloud_api.Models.Requests.PlacementGroups.UpdatePlacementGroupRequest.Name">
             <summary>
-            Name of Datacenter to create Server in (must not be used together with location)
+            New Placement group name
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Firewalls">
-            <summary>
-            Firewalls which should be applied on the Server's public network interface at creation time
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Image">
-            <summary>
-            Image the Server is created from
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageId">
-            <summary>
-            ID of the Image the Server is created from
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ImageName">
-            <summary>
-            Name of the Image the Server is created from
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Labels">
+        <member name="P:hcloud_api.Models.Requests.PlacementGroups.UpdatePlacementGroupRequest.Labels">
             <summary>
             User-defined labels (key-value pairs)
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Location">
+        <member name="P:hcloud_api.Models.Requests.SSHKeys.CreateSSHKeyRequest.Name">
             <summary>
-            Location to create Server in (must not be used together with datacenter)
+            Name of the SSH key
+            <br><b>Required field</b></br>
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationId">
+        <member name="P:hcloud_api.Models.Requests.SSHKeys.CreateSSHKeyRequest.Labels">
             <summary>
-            ID of Location to create Server in (must not be used together with datacenter)
+            User-defined labels
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.LocationName">
+        <member name="P:hcloud_api.Models.Requests.SSHKeys.CreateSSHKeyRequest.PublicKey">
             <summary>
-            Name of Location to create Server in (must not be used together with datacenter)
+            Public key
+            <br/>
+            <b>Required field</b>
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Name">
+        <member name="P:hcloud_api.Models.Requests.SSHKeys.UpdateSSHKeyRequest.Name">
             <summary>
-            Name of the Server to create (must be unique per Project and a valid hostname as per RFC 1123)
+            New name Name to set
             </summary>
         </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Networks">
-            <summary>
-            Network IDs which should be attached to the Server private network interface at the creation time
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerType">
-            <summary>
-            Server type this Server should be created with
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeId">
-            <summary>
-            ID of the Server type this Server should be created with
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.ServerTypeName">
-            <summary>
-            Name of the Server type this Server should be created with
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.SSHKeys">
-            <summary>
-            SSH key IDs (integer) or names (string) which should be injected into the Server at creation time
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.StartAfterCreate">
-            <summary>
-            Start Server right after creation. Defaults to true.
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.UserData">
-            <summary>
-            Cloud-Init user data to use during Server creation. This field is limited to 32KiB.
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.Volumes">
-            <summary>
-            Volume IDs which should be attached to the Server at the creation time.
-            Volumes must be in the same Location.
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.CreateServerRequest.FirewallId.Firewall">
-            <summary>
-            ID of the Firewall
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Name">
-            <summary>
-            New name to set
-            </summary>
-        </member>
-        <member name="P:hcloud_api.Models.Requests.Servers.UpdateServerRequest.Labels">
+        <member name="P:hcloud_api.Models.Requests.SSHKeys.UpdateSSHKeyRequest.Labels">
             <summary>
             User-defined labels (key-value pairs)
             </summary>
@@ -1406,10 +1770,367 @@
             The total number of entries that exist in the database for this query. Nullable if unknown.
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Responses.Servers.Actions.RebuildServerResponse.RootPassword">
+            <summary>
+            Root password when no SSH keys have been specified
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Servers.Actions.RequestConsoleResponse.Password">
+            <summary>
+            VNC password to use for this connection (this password only works in combination with a wss_url with valid token)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Servers.Actions.RequestConsoleResponse.WSSUrl">
+            <summary>
+            URL of websocket proxy to use; this includes a token which is valid for a limited time only
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.Servers.Actions.ResetPasswordResponse.RootPassword">
+            <summary>
+            Password that will be set for this Server once the Action succeeds
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Responses.Servers.CreateServerResponse.RootPassword">
             <summary>
             Root password when no SSH keys have been specified
             </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Responses.SSHKeys.SSHKeyResponse.Key">
+            <summary>
+            SSH key
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.GetActions(System.Int32,hcloud_api.Models.Requests.Actions.ActionSortQuery,System.Nullable{hcloud_api.Models.Objects.Actions.ActionStatus},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Action objects for a Server.
+            You can sort the results by using the sort URI parameter, and filter them with the <b>status</b> parameter.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="sort"></param>
+            <param name="status"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.GetAction(System.Int32,System.Int32)">
+            <summary>
+            Returns a specific Action object for a Server.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="actionId">ID of the Action</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AddToPlacementGroup(System.Int32,System.Int32)">
+            <summary>
+            Adds a Server to a Placement Group.
+            <br />
+            <b>Server must be powered off for this command to succeed.</b>
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="groupId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AddToPlacementGroup(System.Int32,hcloud_api.Models.Objects.PlacementGroup)">
+            <summary>
+            Adds a Server to a Placement Group.
+            <br />
+            <b>Server must be powered off for this command to succeed.</b>
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="group"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AttachISO(System.Int32,System.Int32)">
+            <summary>
+            Attaches an ISO to a Server.
+            <br/>
+            The Server will immediately see it as a new disk.
+            An already attached ISO will automatically be detached before the new ISO is attached.
+            <br />
+            Servers with attached ISOs have a modified boot order: They will try to boot from the ISO first before falling back to hard disk.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="isoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AttachISO(System.Int32,System.String)">
+            <summary>
+            Attaches an ISO to a Server.
+            <br/>
+            The Server will immediately see it as a new disk.
+            An already attached ISO will automatically be detached before the new ISO is attached.
+            <br />
+            Servers with attached ISOs have a modified boot order: They will try to boot from the ISO first before falling back to hard disk.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="isoName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AttachISO(System.Int32,hcloud_api.Models.Objects.ISO)">
+            <summary>
+            Attaches an ISO to a Server.
+            <br/>
+            The Server will immediately see it as a new disk.
+            An already attached ISO will automatically be detached before the new ISO is attached.
+            <br />
+            Servers with attached ISOs have a modified boot order: They will try to boot from the ISO first before falling back to hard disk.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="iso"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AttachToNetwork(System.Int32,System.Int32,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Attaches a Server to a network.
+            <br />
+            This will complement the fixed public Server interface by adding an additional ethernet interface to the Server which is connected to the specified network.
+            <br />
+            The Server will get an IP auto assigned from a subnet of type <b>server</b> in the same <b>network_zone</b>.
+            <br />
+            Using the <b>alias_ips</b> attribute you can also define one or more additional IPs to the Servers.Please note that you will have to configure these IPs by hand on your Server since only the primary IP will be given out by DHCP.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="networkId">ID of an existing network to attach the Server to</param>
+            <param name="ip">IP to request to be assigned to this Server; if you do not provide this then you will be auto assigned an IP address</param>
+            <param name="aliasIps">Additional IPs to be assigned to this Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.AttachToNetwork(System.Int32,hcloud_api.Models.Objects.Network,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Attaches a Server to a network.
+            <br />
+            This will complement the fixed public Server interface by adding an additional ethernet interface to the Server which is connected to the specified network.
+            <br />
+            The Server will get an IP auto assigned from a subnet of type <b>server</b> in the same <b>network_zone</b>.
+            <br />
+            Using the <b>alias_ips</b> attribute you can also define one or more additional IPs to the Servers.Please note that you will have to configure these IPs by hand on your Server since only the primary IP will be given out by DHCP.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="network">Existing network to attach the Server to</param>
+            <param name="ip">IP to request to be assigned to this Server; if you do not provide this then you will be auto assigned an IP address</param>
+            <param name="aliasIps">Additional IPs to be assigned to this Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ChangeAliasIPs(System.Int32,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Changes the alias IPs of an already attached Network.
+            Note that the existing aliases for the specified Network will be replaced with these provided in the request body.
+            So if you want to add an alias IP, you have to provide the existing ones from the Network plus the new alias IP in the request body.
+            </summary>
+            <param name="serverId"></param>
+            <param name="networkId">ID of an existing Network already attached to the Server</param>
+            <param name="aliasIps">New alias IPs to set for this Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ChangeAliasIPs(System.Int32,hcloud_api.Models.Objects.Network,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Changes the alias IPs of an already attached Network.
+            Note that the existing aliases for the specified Network will be replaced with these provided in the request body.
+            So if you want to add an alias IP, you have to provide the existing ones from the Network plus the new alias IP in the request body.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="network">Existing Network already attached to the Server</param>
+            <param name="aliasIps">New alias IPs to set for this Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ChangeReverseDNS(System.Int32,System.String,System.String)">
+            <summary>
+            Changes the hostname that will appear when getting the hostname belonging to the primary IPs (IPv4 and IPv6) of this Server.
+            <br />
+            Floating IPs assigned to the Server are not affected by this.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="ip">Primary IP address for which the reverse DNS entry should be set</param>
+            <param name="dnsPointer">Hostname to set as a reverse DNS PTR entry, reset to original value if <b>null</b></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ChangeProtection(System.Int32,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Changes the protection configuration of the Server.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="protectDelete">If true, prevents the Server from being deleted (currently delete and rebuild attribute needs to have the same value)</param>
+            <param name="protectRebuild">If true, prevents the Server from being rebuilt (currently delete and rebuild attribute needs to have the same value)</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ChangeType(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Changes the type (Cores, RAM and disk sizes) of a Server.
+            <br />
+            Server must be powered off for this command to succeed.
+            <br />
+            This copies the content of its disk, and starts it again.
+            <br />
+            You can only migrate to Server types with the same <b>storage_type</b> and equal or bigger disks.Shrinking disks is not possible as it might destroy data.
+            <br />
+            If the disk gets upgraded, the Server type can not be downgraded any more.If you plan to downgrade the Server type, set <b>upgrade_disk</b> to <b>false</b>.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="typeName">name of Server type the Server should migrate to</param>
+            <param name="upgradeDisk">If false, do not upgrade the disk (this allows downgrading the Server type later)</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.CreateImage(System.Int32,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{hcloud_api.Models.Objects.Images.ImageType})">
+            <summary>
+            Creates an Image (snapshot) from a Server by copying the contents of its disks.
+            <br />
+            This creates a snapshot of the current state of the disk and copies it into an Image. If the Server is currently running you must make sure that its disk content is consistent. Otherwise, the created Image may not be readable.
+            <br />
+            To make sure disk content is consistent, we recommend to shut down the Server prior to creating an Image.
+            <bt />
+            You can either create a <b>backup</b> Image that is bound to the Server and therefore will be deleted when the Server is deleted, or you can create an <b>snapshot</b> Image which is completely independent of the Server it was created from and will survive Server deletion. Backup Images are only available when the backup option is enabled for the Server. Snapshot Images are billed on a per GB basis.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="description">Description of the Image, will be auto-generated if not set</param>
+            <param name="labels">User-defined labels (key-value pairs)</param>
+            <param name="type">Type of Image to create (default: <b>snapshot</b>)</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.DetachFromNetwork(System.Int32,System.Int32)">
+            <summary>
+            Detaches a Server from a network. The interface for this network will vanish.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="networkId">ID of an existing network to detach the Server from</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.DetachISO(System.Int32)">
+            <summary>
+            Detaches an ISO from a Server.
+            <br />
+            In case no ISO Image is attached to the Server, the status of the returned Action is immediately set to <b>success</b>
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.DisableBackups(System.Int32)">
+            <summary>
+            Disables the automatic backup option and deletes all existing Backups for a Server. No more additional charges for backups will be made.
+            <br />
+            <b>Caution: This immediately removes all existing backups for the Server!</b>
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.DisableRescue(System.Int32)">
+            <summary>
+            Disables the Hetzner Rescue System for a Server. This makes a Server start from its disks on next reboot.
+            <br />
+            Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes.
+            <br />
+            Disabling rescue mode will not reboot your Server — you will have to do this yourself.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.EnableBackups(System.Int32)">
+            <summary>
+            Enables and configures the automatic daily backup option for the Server. Enabling automatic backups will increase the price of the Server by 20%. In return, you will get seven slots where Images of type backup can be stored.
+            <br />
+            Backups are automatically created daily.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.EnableRescue(System.Int32,System.Collections.Generic.IEnumerable{System.Int32},System.Nullable{hcloud_api.Models.Requests.Servers.Actions.RescueType})">
+            <summary>
+            Enable the Hetzner Rescue System for this Server. The next time a Server with enabled rescue mode boots it will start a special minimal Linux distribution designed for repair and reinstall.
+            <br />
+            In case a Server cannot boot on its own you can use this to access a Server’s disks.
+            <br />
+            Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes.
+            <br />
+            Enabling rescue mode will not reboot your Server — you will have to do this yourself.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <param name="sshKeys">Array of SSH key IDs which should be injected into the rescue system. Only available for types: <b>linux64</b> and <b>linux32</b></param>
+            <param name="type">Type of rescue system to boot (default: <b>linux64</b>)</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.PowerOff(System.Int32)">
+            <summary>
+            Cuts power to the Server.
+            <br />
+            This forcefully stops it without giving the Server operating system time to gracefully stop.
+            May lead to data loss, equivalent to pulling the power cord. Power off should only be used when shutdown does not work.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.PowerOn(System.Int32)">
+            <summary>
+            Starts a Server by turning its power on.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.Reboot(System.Int32)">
+            <summary>
+            Reboots a Server gracefully by sending an ACPI request.
+            <br />
+            The Server operating system must support ACPI and react to the request, otherwise the Server will not reboot.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.Rebuild(System.Int32,System.String)">
+            <summary>
+            Rebuilds a Server overwriting its disk with the content of an Image, thereby destroying all data on the target Server
+            <br />
+            The Image can either be one you have created earlier(<b>backup</b> or <b>snapshot</b> Image) or it can be a completely fresh <b>system</b> Image provided by us.
+            <br />
+            Your Server will automatically be powered off before the rebuild command executes.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <param name="imageName">Name of Image to rebuilt from. Passing a name only works for <b>system</b> Images since the other Image types do not have a name set.</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.RemoveFromPlacementGroup(System.Int32)">
+            <summary>
+            Removes a Server from a Placement Group.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.RequestConsole(System.Int32)">
+            <summary>
+            Requests credentials for remote access via VNC over websocket to keyboard, monitor, and mouse for a Server.
+            The provided URL is valid for 1 minute, after this period a new url needs to be created to connect to the Server.
+            How long the connection is open after the initial connect is not subject to this timeout.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.Reset(System.Int32)">
+            <summary>
+            Cuts power to a Server and starts it again.
+            <br />
+            This forcefully stops it without giving the Server operating system time to gracefully stop.
+            This may lead to data loss, it’s equivalent to pulling the power cord and plugging it in again.
+            Reset should only be used when reboot does not work.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.ResetPassword(System.Int32)">
+            <summary>
+            Resets the root password. Only works for Linux systems that are running the qemu guest agent. Server must be powered on (state on) in order for this operation to succeed.
+            <br />
+            This will generate a new password for this Server and return it.
+            <br />
+            If this does not succeed you can use the rescue system to netboot the Server and manually change your Server password by hand.
+            </summary>
+            <param name="serverId">ID of the Server</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IServerActionsService.Shutdown(System.Int32)">
+            <summary>
+            Shuts down a Server gracefully by sending an ACPI shutdown request.
+            <br />
+            The Server operating system must support ACPI and react to the request, otherwise the Server will not shut down.
+            </summary>
+            <param name="id">ID of the Server</param>
+            <returns></returns>
         </member>
         <member name="M:hcloud_api.Services.IHCloudService.GetLocation(System.Int32)">
             <summary>
@@ -1863,6 +2584,281 @@
             Updates the Volume properties.
             </summary>
             <param name="volume"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetCertificate(System.Int32)">
+            <summary>
+            Gets a specific Certificate object.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetCertificates(System.String,System.String,hcloud_api.Models.Requests.Certificates.CertificateSortQuery,System.Nullable{hcloud_api.Models.Objects.Certificates.CertificateType},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Certificate objects.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="type">The response will only contain Certificates matching the type.</param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateCertificate(hcloud_api.Models.Requests.Servers.CreateServerRequest)">
+            <summary>
+            Creates a new Certificate.
+            <br/>
+            The default type <b>uploaded</b> allows for uploading your existing <b>certificate</b> and <b>private_key</b> in PEM format.
+            You have to monitor its expiration date and handle renewal yourself.
+            <br/>
+            In contrast, type <b>managed</b> requests a new Certificate from Let's Encrypt for the specified <b>domain_names</b>.
+            Only domains managed by Hetzner DNS are supported.
+            We handle renewal and timely alert the project owner via email if problems occur.
+            <br/>
+            For type <b>managed</b> Certificates the <b>action</b> key of the response contains the Action that allows for tracking the issuance process.
+            For type <b>uploaded</b> Certificates the <b>action</b> is always null.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteCertificate(System.Int32)">
+            <summary>
+            Deletes a Certificate.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteCertificate(hcloud_api.Models.Objects.Certificate)">
+            <summary>
+            Deletes a Certificate.
+            </summary>
+            <param name="certificate"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateCertificate(System.Int32,hcloud_api.Models.Requests.Certificates.UpdateCertificateRequest)">
+            <summary>
+            Updates the Certificate properties.
+            </summary>
+            <param name="id"></param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateCertificate(hcloud_api.Models.Objects.Certificate)">
+            <summary>
+            Updates the Certificate properties.
+            </summary>
+            <param name="certificate"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetSSHKey(System.Int32)">
+            <summary>
+            Returns a specific SSH key object.
+            </summary>
+            <param name="id">ID of the SSH key</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetSSHKeys(System.String,System.String,System.String,hcloud_api.Models.Requests.SSHKeys.SSHKeySortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all SSH key objects.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="fingerprint">Can be used to filter SSH keys by their fingerprint. The response will only contain the SSH key matching the specified fingerprint.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateSSHKey(hcloud_api.Models.Requests.SSHKeys.CreateSSHKeyRequest)">
+            <summary>
+            Creates a new SSH key with the given <b>name</b> and <b>public_key</b>.
+            Once an SSH key is created, it can be used in other calls such as creating Servers.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteSSHKey(System.Int32)">
+            <summary>
+            Deletes an SSH key. It cannot be used anymore.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteSSHKey(hcloud_api.Models.Objects.SSHKey)">
+            <summary>
+            Deletes an SSH key. It cannot be used anymore.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateSSHKey(System.Int32,hcloud_api.Models.Requests.SSHKeys.UpdateSSHKeyRequest)">
+            <summary>
+            Updates an SSH key. You can update an SSH key name and an SSH key labels.
+            <br/>Please note that when updating labels, the SSH key current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateSSHKey(hcloud_api.Models.Objects.SSHKey)">
+            <summary>
+            Updates an SSH key. You can update an SSH key name and an SSH key labels.
+            <br/>
+            Please note that when updating labels, the SSH key current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetPlacementGroup(System.Int32)">
+            <summary>
+            Gets a specific PlacementGroup object.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetPlacementGroups(System.String,System.String,System.Nullable{hcloud_api.Models.Objects.PlacementGroups.PlacementGroupType},hcloud_api.Models.Requests.PlacementGroups.PlacementGroupSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all PlacementGroup objects.
+            </summary>
+            <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+            <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+            <param name="type">The response will only contain PlacementGroups matching the type.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreatePlacementGroup(hcloud_api.Models.Requests.PlacementGroups.CreatePlacementGroupRequest)">
+            <summary>
+            Creates a new PlacementGroup.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeletePlacementGroup(System.Int32)">
+            <summary>
+            Deletes a PlacementGroup.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeletePlacementGroup(hcloud_api.Models.Objects.PlacementGroup)">
+            <summary>
+            Deletes a PlacementGroup.
+            </summary>
+            <param name="group"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdatePlacementGroup(System.Int32,hcloud_api.Models.Requests.PlacementGroups.UpdatePlacementGroupRequest)">
+            <summary>
+            Updates the PlacementGroup properties.
+            <br/>
+            Note that when updating labels, the PlacementGroup’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            <br />
+            Note: if the PlacementGroup object changes during the request, the response will be a “conflict” error.
+            </summary>
+            <param name="id">ID of the resource</param>
+            <param name="group"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdatePlacementGroup(hcloud_api.Models.Objects.PlacementGroup)">
+            <summary>
+            Updates the PlacementGroup properties.
+            <br/>
+            Note that when updating labels, the PlacementGroup’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            <br />
+            Note: if the PlacementGroup object changes during the request, the response will be a “conflict” error.
+            </summary>
+            <param name="group"></param>
+            <returns></returns>
+            <exception cref="T:hcloud_api.Exceptions.HCloudException">If an error field is present in the response from the server</exception>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFloatingIP(System.Int32)">
+            <summary>
+            Returns a specific Floating IP object.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.GetFloatingIPs(System.String,System.String,hcloud_api.Models.Requests.FloatingIPs.FloatingIPSortQuery,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns all Floating IP objects.
+            </summary>
+            <param name="name">Can be used to filter Floating IPs by their name. The response will only contain the Floating IP matching the specified name.</param>
+            <param name="labelSelector">Can be used to filter Floating IPs by labels. The response will only contain Floating IPs matching the label selector.</param>
+            <param name="sort"></param>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.CreateFloatingIP(hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset)">
+            <summary>
+            Creates a new Floating IP assigned to a Server.
+            <br/>If you want to create a Floating IP that is not bound to a Server, you need to provide the <b>home_location</b> key instead of <b>server</b>.
+            This can be either the ID or the name of the Location this IP shall be created in.
+            Note that a Floating IP can be assigned to a Server in any Location later on.
+            For optimal routing it is advised to use the Floating IP in the same Location it was created in.
+            </summary>
+            <param name="requset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFloatingIP(System.Int32)">
+            <summary>
+            Deletes a Floating IP. If it is currently assigned to a Server it will automatically get unassigned.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.DeleteFloatingIP(hcloud_api.Models.Objects.FloatingIP)">
+            <summary>
+            Deletes a Floating IP. If it is currently assigned to a Server it will automatically get unassigned.
+            </summary>
+            <param name="ip"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFloatingIP(System.Int32,hcloud_api.Models.Requests.FloatingIPs.UpdateFloatingIPRequest)">
+            <summary>
+            Updates the description or labels of a Floating IP.
+            <br />
+            Also note that when updating labels, the Floating IP’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.IHCloudService.UpdateFloatingIP(hcloud_api.Models.Objects.FloatingIP)">
+            <summary>
+            Updates the description or labels of a Floating IP.
+            <br />
+            Also note that when updating labels, the Floating IP’s current set of labels will be replaced with the labels provided in the request body.
+            So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.
+            </summary>
+            <param name="ip"></param>
             <returns></returns>
         </member>
     </members>

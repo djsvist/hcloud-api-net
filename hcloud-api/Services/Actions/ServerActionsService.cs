@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using hcloud_api.Extensions;
+﻿using hcloud_api.Extensions;
 using hcloud_api.Models.Objects;
-using hcloud_api.Models.Objects.Actions;
 using hcloud_api.Models.Objects.Images;
-using hcloud_api.Models.Requests.Actions;
 using hcloud_api.Models.Requests.Servers.Actions;
 using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Servers.Actions;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions
 {
-    public class ServerActionsService : IServerActionsService
+    public class ServerActionsService : ActionsService, IServerActionsService
     {
         private readonly HttpClient client;
 
-        public ServerActionsService(HttpClient client)
-        {
-            this.client = client;
-        }
+        public ServerActionsService(HttpClient client) : base(client) { }
+
+        protected override string BasePath => "servers";
 
         public async Task<HAction> AddToPlacementGroup(int serverId, int groupId)
         {
@@ -169,24 +166,6 @@ namespace hcloud_api.Services.Actions
                 SSHKeys = sshKeys,
                 Type = type
             });
-        }
-
-        public async Task<HAction> GetAction(int serverId, int actionId)
-        {
-            var result = await client.GetJsonAsync<ActionResponse>($"servers/{serverId}/actions/{actionId}");
-            return result.Action;
-        }
-
-        public async Task<GetActionsResponse> GetActions(int serverId, ActionSortQuery sort = null, ActionStatus? status = null, int? page = null, int? perPage = null)
-        {
-            var query = new Dictionary<string, object>();
-
-            query.AddNotNull("sort", sort);
-            query.AddNotNull("status", status);
-            query.AddNotNull("page", page);
-            query.AddNotNull("per_page", perPage);
-
-            return await client.GetJsonAsync<GetActionsResponse>($"servers/{serverId}/actions?" + query.ToQuery());
         }
 
         public async Task<HAction> PowerOff(int id)

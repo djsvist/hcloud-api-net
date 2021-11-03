@@ -20,6 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddHttpClient<IHCloudService, HCloudService>(clientName);
             services.AddHttpClient<IServerActionsService, ServerActionsService>(clientName);
+            services.AddHttpClient<ISertificateActionsService, SertificateActionsService>(clientName);
 
             return services;
         }

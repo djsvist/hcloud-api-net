@@ -1,41 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using hcloud_api.Models.Objects;
-using hcloud_api.Models.Objects.Actions;
+﻿using hcloud_api.Models.Objects;
 using hcloud_api.Models.Objects.Images;
-using hcloud_api.Models.Requests.Actions;
 using hcloud_api.Models.Requests.Servers.Actions;
-using hcloud_api.Models.Responses;
 using hcloud_api.Models.Responses.Servers.Actions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions
 {
-    public interface IServerActionsService
+    public interface IServerActionsService : IActionsService
     {
-        /// <summary>
-        /// Returns all Action objects for a Server.
-        /// You can sort the results by using the sort URI parameter, and filter them with the <b>status</b> parameter.
-        /// </summary>
-        /// <param name="serverId">ID of the Server</param>
-        /// <param name="sort"></param>
-        /// <param name="status"></param>
-        /// <param name="page"></param>
-        /// <param name="perPage"></param>
-        /// <returns></returns>
-        Task<GetActionsResponse> GetActions(int serverId,
-            ActionSortQuery sort = null,
-            ActionStatus? status = null,
-            int? page = null,
-            int? perPage = null);
-
-        /// <summary>
-        /// Returns a specific Action object for a Server.
-        /// </summary>
-        /// <param name="serverId">ID of the Server</param>
-        /// <param name="actionId">ID of the Action</param>
-        /// <returns></returns>
-        Task<HAction> GetAction(int serverId, int actionId);
-
         /// <summary>
         /// Adds a Server to a Placement Group.
         /// <br />

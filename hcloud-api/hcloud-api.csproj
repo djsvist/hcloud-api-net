@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>hcloud-api-net</PackageId>
     <Authors>DJSvist</Authors>
-    <Version>0.1.7</Version>
+    <Version>0.1.8</Version>
     <PackageProjectUrl>https://github.com/djsvist/hcloud-api-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/djsvist/hcloud-api-net</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -56,7 +56,6 @@
     <Folder Include="Models\Objects\FloatingIPs\" />
     <Folder Include="Models\Requests\FloatingIPs\" />
     <Folder Include="Models\Responses\FloatingIPs\" />
-    <Folder Include="Services\Actions\" />
     <Folder Include="Models\Responses\Servers\Actions\" />
     <Folder Include="Models\Requests\Servers\Actions\" />
     <Folder Include="Models\Requests\Actions\" />
