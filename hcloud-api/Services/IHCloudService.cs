@@ -26,9 +26,17 @@ using hcloud_api.Models.Responses.SSHKeys;
 using hcloud_api.Models.Responses.Volumes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using hcloud_api.Models.Requests.PrimaryIPs;
+using hcloud_api.Models.Responses.PrimaryIPs;
+// ReSharper disable InconsistentNaming
 
 namespace hcloud_api.Services
 {
+    /// <summary>
+    /// Service for CRUD actions on all Hetzner Cloud objects<br/>
+    /// <b>All methods throw an <see cref="hcloud_api.Exceptions.HCloudException"/> if an error field is present in the response from the server</b>
+    /// </summary>
+    /// <exception cref="hcloud_api.Exceptions.HCloudException"></exception>
     public interface IHCloudService
     {
         /// <summary>
@@ -725,7 +733,7 @@ namespace hcloud_api.Services
         /// Note: if the PlacementGroup object changes during the request, the response will be a “conflict” error.
         /// </summary>
         /// <param name="id">ID of the resource</param>
-        /// <param name="group"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         /// <exception cref="HCloudException">If an error field is present in the response from the server</exception>
         Task<PlacementGroup> UpdatePlacementGroup(int id, UpdatePlacementGroupRequest request);
@@ -773,7 +781,7 @@ namespace hcloud_api.Services
         /// Note that a Floating IP can be assigned to a Server in any Location later on.
         /// For optimal routing it is advised to use the Floating IP in the same Location it was created in.
         /// </summary>
-        /// <param name="requset"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         Task<CreateFloatingIPResponse> CreateFloatingIP(CreateFloatingIPRequset request);
 
@@ -811,5 +819,69 @@ namespace hcloud_api.Services
         /// <param name="ip"></param>
         /// <returns></returns>
         Task<FloatingIP> UpdateFloatingIP(FloatingIP ip);
+
+
+        /// <summary>
+        /// Returns a specific Primary IP object.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        Task<PrimaryIP> GetPrimaryIP(int id);
+
+        /// <summary>
+        /// Returns all Primary IP objects.
+        /// </summary>
+        /// <param name="name">Can be used to filter resources by their name. The response will only contain the resources matching the specified name</param>
+        /// <param name="labelSelector">Can be used to filter resources by labels. The response will only contain resources matching the label selector.</param>
+        /// <param name="ip"></param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+        Task<GetPrimaryIPsResponse> GetPrimaryIPs(string name = null,
+            string labelSelector = null,
+            string ip = null,
+            PrimaryIPSortQuery sort = null,
+            int? page = null,
+            int? perPage = null);
+
+        /// <summary>
+        /// Creates a new Primary IP, optionally assigned to a Server.<br/>
+        /// If you want to create a Primary IP that is not assigned to a Server, you need to provide the <b><see cref="CreatePrimaryIPRequest.Datacenter"/></b> key instead of <b><see cref="CreatePrimaryIPRequest.AssigneeId"/></b>.
+        /// This can be either the ID or the name of the Datacenter this Primary IP shall be created in.<br/>
+        /// Note that a Primary IP can only be assigned to a Server in the same Datacenter later on.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<CreatePrimaryIPResponse> CreatePrimaryIP(CreatePrimaryIPRequest request);
+
+        /// <summary>
+        /// Deletes a Primary IP. <br/>
+        /// The Primary IP may be assigned to a Server. In this case it is unassigned automatically. The Server must be powered off (status <b>off</b>) in order for this operation to succeed.
+        /// </summary>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
+        Task DeletePrimaryIP(int id);
+
+        /// <summary>
+        /// Updates the Primary IP.<br/>
+        /// Note that when updating labels, the Primary IP's current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.<br/>
+        /// If the Primary IP object changes during the request, the response will be a “conflict” error.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<PrimaryIP> UpdatePrimaryIP(int id, UpdatePrimaryIPRequest request);
+
+        /// <summary>
+        /// Updates the Primary IP.<br/>
+        /// Note that when updating labels, the Primary IP's current set of labels will be replaced with the labels provided in the request body.
+        /// So, for example, if you want to add a new label, you have to provide all existing labels plus the new label in the request body.<br/>
+        /// If the Primary IP object changes during the request, the response will be a “conflict” error.
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        Task<PrimaryIP> UpdatePrimaryIP(PrimaryIP ip);
     }
 }

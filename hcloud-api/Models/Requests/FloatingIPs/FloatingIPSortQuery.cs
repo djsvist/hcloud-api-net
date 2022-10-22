@@ -1,24 +1,23 @@
-﻿namespace hcloud_api.Models.Requests.Servers
+﻿namespace hcloud_api.Models.Requests.FloatingIPs
 {
-    public class ServerSortQuery
+    public class FloatingIPSortQuery
     {
         private string _value;
 
-        private ServerSortQuery(string value) => _value = value;
+        private FloatingIPSortQuery(string value) => _value = value;
 
-        public static ServerSortQuery Id { get; } = new ServerSortQuery("id");
-        public static ServerSortQuery IdAsc { get; } = new ServerSortQuery("id:asc");
-        public static ServerSortQuery IdDesc { get; } = new ServerSortQuery("id:desc");
-        public static ServerSortQuery Name { get; } = new ServerSortQuery("name");
-        public static ServerSortQuery NameAsc { get; } = new ServerSortQuery("name:asc");
-        public static ServerSortQuery NameDesc { get; } = new ServerSortQuery("name:desc");
-        public static ServerSortQuery Created { get; } = new ServerSortQuery("created");
-        public static ServerSortQuery CreatedAsc { get; } = new ServerSortQuery("created:asc");
-        public static ServerSortQuery CreatedDesc { get; } = new ServerSortQuery("created:desc");
+        public static FloatingIPSortQuery Id { get; } = new FloatingIPSortQuery("id");
+        public static FloatingIPSortQuery IdAsc { get; } = new FloatingIPSortQuery("id:asc");
+        public static FloatingIPSortQuery IdDesc { get; } = new FloatingIPSortQuery("id:desc");
+        public static FloatingIPSortQuery Created { get; } = new FloatingIPSortQuery("created");
+        public static FloatingIPSortQuery CreatedAsc { get; } = new FloatingIPSortQuery("created:asc");
+        public static FloatingIPSortQuery CreatedDesc { get; } = new FloatingIPSortQuery("created:desc");
 
         public override string ToString()
         {
             return _value;
         }
     }
+
+    
 }

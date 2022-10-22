@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace hcloud_api.Models.Objects.LoadBalancers.Services
 {
+    /// <summary>
+    /// Configuration option for protocols http and https
+    /// </summary>
     public class HttpCfg
     {
         /// <summary>

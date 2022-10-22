@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace hcloud_api.Models.Objects.FloatingIPs
+namespace hcloud_api.Models.Objects.Shared
 {
     public class DNSPointer
     {

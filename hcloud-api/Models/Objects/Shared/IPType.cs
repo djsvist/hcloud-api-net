@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace hcloud_api.Models.Objects.FloatingIPs
+namespace hcloud_api.Models.Objects.Shared
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum FloatingIPType
+    public enum IPType
     {
         [EnumMember(Value = "ipv4")]
         IPv4,

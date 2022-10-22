@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using hcloud_api.Models.Objects;
-using hcloud_api.Models.Objects.FloatingIPs;
+using hcloud_api.Models.Objects.Shared;
 using Newtonsoft.Json;
 
 namespace hcloud_api.Models.Requests.FloatingIPs
@@ -60,6 +60,6 @@ namespace hcloud_api.Models.Requests.FloatingIPs
         /// </summary>
         [JsonProperty("type")]
         [JsonRequired]
-        public FloatingIPType Type { get; set; }
+        public IPType Type { get; set; }
     }
 }
