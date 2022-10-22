@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace hcloud_api.Models.Requests.Volumes.Actions
+namespace hcloud_api.Models.Requests.Networks.Actions
 {
     /// <summary>
     /// 
