@@ -1,5 +1,6 @@
 ﻿using hcloud_api.Services;
 using hcloud_api.Services.Actions;
+using hcloud_api.Services.Actions.Impl;
 using System;
 using System.Net.Http.Headers;
 
@@ -9,6 +10,13 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         private const string clientName = "hcloud-api-net";
 
+        /// <summary>
+        /// Add services for Hetzner API
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="token">Your API token</param>
+        /// <param name="baseUri"></param>
+        /// <returns></returns>
         public static IServiceCollection UseHCloudAPI(this IServiceCollection services, string token, string baseUri = "https://api.hetzner.cloud/v1/")
         {
             services.AddHttpClient(clientName, c =>
@@ -21,6 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddHttpClient<IHCloudService, HCloudService>(clientName);
             services.AddHttpClient<IServerActionsService, ServerActionsService>(clientName);
             services.AddHttpClient<ISertificateActionsService, SertificateActionsService>(clientName);
+            services.AddHttpClient<IVolumeActionsService, VolumeActionsService>(clientName);
 
             return services;
         }

@@ -4,11 +4,11 @@ using hcloud_api.Models.Responses;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace hcloud_api.Services.Actions
+namespace hcloud_api.Services.Actions.Impl
 {
     public class SertificateActionsService : ActionsService, ISertificateActionsService
     {
-        public SertificateActionsService(HttpClient client) : base (client) { }
+        public SertificateActionsService(HttpClient client) : base(client) { }
 
         protected override string BasePath => "certificates";
 

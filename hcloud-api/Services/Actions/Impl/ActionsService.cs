@@ -7,23 +7,25 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace hcloud_api.Services.Actions
+namespace hcloud_api.Services.Actions.Impl
 {
     public abstract class ActionsService : IActionsService
     {
         protected readonly HttpClient client;
 
-        public ActionsService(HttpClient client)
+        protected ActionsService(HttpClient client)
         {
             this.client = client;
         }
 
+        /// <inheritdoc />
         public async Task<HAction> GetAction(int resourceId, int actionId)
         {
             var result = await client.GetJsonAsync<ActionResponse>($"{BasePath}/{resourceId}/actions/{actionId}");
             return result.Action;
         }
 
+        /// <inheritdoc />
         public async Task<GetActionsResponse> GetActions(int resourceId, ActionSortQuery sort = null, ActionStatus? status = null, int? page = null, int? perPage = null)
         {
             var query = new Dictionary<string, object>();

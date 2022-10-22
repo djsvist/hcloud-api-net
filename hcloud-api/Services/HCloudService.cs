@@ -346,12 +346,14 @@ namespace hcloud_api.Services
             });
         }
 
+        /// <inheritdoc />
         public async Task<Firewall> GetFirewall(int id)
         {
             var result = await client.GetJsonAsync<FirewallResponse>(Append(FirewallPath, id));
             return result.Firewall;
         }
 
+        /// <inheritdoc />
         public async Task<GetFirewallsResponse> GetFirewalls(string name = null, string labelSelector = null, FirewallSortQuery sort = null, int? page = null, int? perPage = null)
         {
             var query = new Dictionary<string, object>();

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace hcloud_api.Services.Actions
+namespace hcloud_api.Services.Actions.Impl
 {
     public class ServerActionsService : ActionsService, IServerActionsService
     {
@@ -21,7 +21,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> AddToPlacementGroup(int serverId, int groupId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/add_to_placement_group", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/add_to_placement_group", new
             {
                 placement_group = groupId
             });
@@ -40,7 +40,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> AttachISO(int serverId, string isoName)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/attach_iso", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/attach_iso", new
             {
                 iso = isoName
             });
@@ -54,7 +54,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> AttachToNetwork(int serverId, int networkId, string ip = null, IEnumerable<string> aliasIps = null)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/attach_to_network", new AttachToNetworkRequest
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/attach_to_network", new AttachToNetworkRequest
             {
                 AliasIPs = aliasIps,
                 IP = ip,
@@ -70,7 +70,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> ChangeAliasIPs(int serverId, int networkId, IEnumerable<string> aliasIps)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_alias_ips", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/change_alias_ips", new
             {
                 network = networkId,
                 alias_ips = aliasIps
@@ -85,7 +85,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> ChangeProtection(int serverId, bool? protectDelete = null, bool? protectRebuild = null)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_protection", new ChangeProtectionRequest
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/change_protection", new ChangeProtectionRequest
             {
                 ProtectDelete = protectDelete,
                 ProtectRebuild = protectRebuild
@@ -95,7 +95,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> ChangeReverseDNS(int serverId, string ip, string dnsPointer)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_dns_ptr", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/change_dns_ptr", new
             {
                 ip,
                 dns_ptr = dnsPointer
@@ -105,7 +105,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> ChangeType(int serverId, string typeName, bool upgradeDisk)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/change_type", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/change_type", new
             {
                 server_type = typeName,
                 upgrade_disk = upgradeDisk
@@ -118,7 +118,7 @@ namespace hcloud_api.Services.Actions
             if (type != ImageType.Backup && type != ImageType.Snapshot && type != null)
                 throw new ArgumentException("Image type can be Snapshot or Backup", nameof(type));
 
-            return await client.PostJsonAsync<CreateImageResponse>($"servers/{serverId}/actions/create_image", new CreateImageRequest
+            return await client.PostJsonAsync<CreateImageResponse>($"{BasePath}/{serverId}/actions/create_image", new CreateImageRequest
             {
                 Description = description,
                 Labels = labels,
@@ -128,7 +128,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> DetachFromNetwork(int serverId, int networkId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/detach_from_network", new
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/detach_from_network", new
             {
                 network = networkId
             });
@@ -137,31 +137,31 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> DetachISO(int serverId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/detach_iso");
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/detach_iso");
             return result.Action;
         }
 
         public async Task<HAction> DisableBackups(int serverId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/disable_backup");
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/disable_backup");
             return result.Action;
         }
 
         public async Task<HAction> DisableRescue(int serverId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/disable_rescue");
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/disable_rescue");
             return result.Action;
         }
 
         public async Task<HAction> EnableBackups(int serverId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/enable_backup");
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/enable_backup");
             return result.Action;
         }
 
         public async Task<EnableRescueResponse> EnableRescue(int serverId, IEnumerable<int> sshKeys = null, RescueType? type = null)
         {
-            return await client.PostJsonAsync<EnableRescueResponse>($"servers/{serverId}/actions/enable_rescue", new EnableRescueRequest
+            return await client.PostJsonAsync<EnableRescueResponse>($"{BasePath}/{serverId}/actions/enable_rescue", new EnableRescueRequest
             {
                 SSHKeys = sshKeys,
                 Type = type
@@ -188,7 +188,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<RebuildServerResponse> Rebuild(int id, string imageName)
         {
-            return  await client.PostJsonAsync<RebuildServerResponse>($"servers/{id}/actions/rebuild", new
+            return await client.PostJsonAsync<RebuildServerResponse>($"servers/{id}/actions/rebuild", new
             {
                 image = imageName
             });
@@ -196,13 +196,13 @@ namespace hcloud_api.Services.Actions
 
         public async Task<HAction> RemoveFromPlacementGroup(int serverId)
         {
-            var result = await client.PostJsonAsync<ActionResponse>($"servers/{serverId}/actions/remove_from_placement_group");
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{serverId}/actions/remove_from_placement_group");
             return result.Action;
         }
 
         public async Task<RequestConsoleResponse> RequestConsole(int serverId)
         {
-            return await client.PostJsonAsync<RequestConsoleResponse>($"servers/{serverId}/actions/request_console");
+            return await client.PostJsonAsync<RequestConsoleResponse>($"{BasePath}/{serverId}/actions/request_console");
         }
 
         public async Task<HAction> Reset(int id)
@@ -213,7 +213,7 @@ namespace hcloud_api.Services.Actions
 
         public async Task<ResetPasswordResponse> ResetPassword(int serverId)
         {
-            return await client.PostJsonAsync<ResetPasswordResponse>($"servers/{serverId}/actions/reset_password");
+            return await client.PostJsonAsync<ResetPasswordResponse>($"{BasePath}/{serverId}/actions/reset_password");
         }
 
         public async Task<HAction> Shutdown(int id)

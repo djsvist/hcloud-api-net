@@ -1800,24 +1800,33 @@
             SSH key
             </summary>
         </member>
-        <member name="M:hcloud_api.Services.Actions.IServerActionsService.GetActions(System.Int32,hcloud_api.Models.Requests.Actions.ActionSortQuery,System.Nullable{hcloud_api.Models.Objects.Actions.ActionStatus},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:hcloud_api.Services.Actions.IActionsService.GetActions(System.Int32,hcloud_api.Models.Requests.Actions.ActionSortQuery,System.Nullable{hcloud_api.Models.Objects.Actions.ActionStatus},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
-            Returns all Action objects for a Server.
+            Returns all Action objects for a resource.
             You can sort the results by using the sort URI parameter, and filter them with the <b>status</b> parameter.
             </summary>
-            <param name="serverId">ID of the Server</param>
+            <param name="resourceId">ID of the Resource</param>
             <param name="sort"></param>
             <param name="status"></param>
             <param name="page"></param>
             <param name="perPage"></param>
             <returns></returns>
         </member>
-        <member name="M:hcloud_api.Services.Actions.IServerActionsService.GetAction(System.Int32,System.Int32)">
+        <member name="M:hcloud_api.Services.Actions.IActionsService.GetAction(System.Int32,System.Int32)">
             <summary>
-            Returns a specific Action object for a Server.
+            Returns a specific Action object for a resource.
             </summary>
-            <param name="serverId">ID of the Server</param>
+            <param name="resourceId">ID of the Resource</param>
             <param name="actionId">ID of the Action</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.ISertificateActionsService.RetryIssuanceOrRenewal(System.Int32)">
+            <summary>
+            Retry a failed Certificate issuance or renewal.
+            <br />
+            Only applicable if the type of the Certificate is <b>managed</b> and the issuance or renewal status is <b>failed</b>
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:hcloud_api.Services.Actions.IServerActionsService.AddToPlacementGroup(System.Int32,System.Int32)">
