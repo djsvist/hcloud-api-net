@@ -4,23 +4,15 @@ A .net library for the Hetzner Cloud API
 ## Warning
 __The package is under development__
 
-At the moment, only CRUD operations (where possible) are implemented for the following objects:
+At the moment, all CRUD operations (where possible) are implemented.
 
-`ISOs`
-`Datacenters`
-`Servers`
-`Server types`
+Actions implemented for the following objects:
+
 `Networks`
-`Images`
-`LoadBalancers`
-`LoadBalancer Types`
-`Locations`
-`Firewalls`
-`Volumes`
 `Certificates`
-`SSH keys`
-`Placement Groups`
-`Floating IPs`
+`Servers`
+`Volumes`
+`LoadBalancers`
 
 ## Installation
 
@@ -33,13 +25,20 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Usage
 
+CRUD action placed in `IHCloudService` interface.
+
 You can use parameter object, id or name on creating request
 
 ```C#
 using hcloud_api.Services;
 
 private readonly IHCloudService service;
+
 private readonly IServerActionsService serverActions;
+private readonly ILoadBalancerActionsService lbActions;
+private readonly INetworkActionsService networkActions;
+private readonly ISertificateActionsService sertificateActions;
+private readonly IVolumeActionsService volumeActions;
 
 var serverTypes = await service.GetServerTypes(name: "cx11");
 

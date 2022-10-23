@@ -9,10 +9,20 @@ using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions.Impl
 {
+    /// <summary>
+    /// Base actions class
+    /// </summary>
     public abstract class ActionsService : IActionsService
     {
+        /// <summary>
+        /// http client
+        /// </summary>
         protected readonly HttpClient client;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="client"></param>
         protected ActionsService(HttpClient client)
         {
             this.client = client;
@@ -38,6 +48,34 @@ namespace hcloud_api.Services.Actions.Impl
             return await client.GetJsonAsync<GetActionsResponse>($"{BasePath}/{resourceId}/actions?" + query.ToQuery());
         }
 
+        /// <summary>
+        /// Execute action request
+        /// </summary>
+        /// <param name="action">Action name</param>
+        /// <param name="resourceId"></param>
+        /// <param name="request">Request data</param>
+        /// <returns></returns>
+        protected async Task<HAction> Execute<T>(string action, int resourceId, T request)
+        {
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{resourceId}/actions/{action}", request);
+            return result.Action;
+        }
+
+        /// <summary>
+        /// Execute action request
+        /// </summary>
+        /// <param name="action">Action name</param>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        protected async Task<HAction> Execute(string action, int resourceId)
+        {
+            var result = await client.PostJsonAsync<ActionResponse>($"{BasePath}/{resourceId}/actions/{action}");
+            return result.Action;
+        }
+
+        /// <summary>
+        /// Base path of actions url
+        /// </summary>
         protected abstract string BasePath { get; }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace hcloud_api.Models.Objects.Shared
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PriceDetail
     {
         /// <summary>

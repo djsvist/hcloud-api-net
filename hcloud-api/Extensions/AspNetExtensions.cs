@@ -31,6 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddHttpClient<ISertificateActionsService, SertificateActionsService>(clientName);
             services.AddHttpClient<IVolumeActionsService, VolumeActionsService>(clientName);
             services.AddHttpClient<INetworkActionsService, NetworkActionsService>(clientName);
+            services.AddHttpClient<ILoadBalancerActionsService, LoadBalancerActionsService>(clientName);
 
             return services;
         }
