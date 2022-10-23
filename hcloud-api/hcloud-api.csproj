@@ -60,7 +60,6 @@
     <Folder Include="Models\Objects\PlacementGroups\" />
     <Folder Include="Models\Requests\PlacementGroups\" />
     <Folder Include="Models\Responses\PlacementGroups\" />
-    <Folder Include="Models\Requests\FloatingIPs\" />
     <Folder Include="Models\Responses\FloatingIPs\" />
     <Folder Include="Models\Responses\Servers\Actions\" />
     <Folder Include="Models\Requests\Servers\Actions\" />

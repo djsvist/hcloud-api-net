@@ -1427,6 +1427,21 @@
             User-defined labels (key-value pairs)
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.Actions.ApplyToResourcesRequest.ApplyTo">
+            <summary>
+            Resources the Firewall should be applied to
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.Actions.RemoveFromResourcesRequest.RemoveFrom">
+            <summary>
+            Resources the Firewall should be removed from
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.Actions.SetRulesRequest.Rules">
+            <summary>
+            Array of rules
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.Name">
             <summary>
             Name of the Resource. Must be unique per Project
@@ -1443,6 +1458,32 @@
             Firewall rules
             </summary>
         </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.CreateFirewallRequest.ApplyTo">
+            <summary>
+            Resources the Firewall should be applied to
+            </summary>
+        </member>
+        <member name="T:hcloud_api.Models.Requests.Firewalls.FirewallResourceSelector">
+            <summary>
+            Resources the Firewall should be applied to
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.FirewallResourceSelector.LabelSelector">
+            <summary>
+            Configuration for type LabelSelector, required if type is <b>label_selector</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.FirewallResourceSelector.Server">
+            <summary>
+            Configuration for type Server, required if type is <b>server</b>
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Firewalls.FirewallResourceSelector.Type">
+            <summary>
+            Type of resource referenced
+            <br><b>Required field</b></br>
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Name">
             <summary>
             New firewall name
@@ -1451,6 +1492,36 @@
         <member name="P:hcloud_api.Models.Requests.Firewalls.UpdateFirewallRequest.Labels">
             <summary>
             User-defined labels (key-value pairs)
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.Actions.AssignToServerRequest.ServerId">
+            <summary>
+            ID of the Server the Floating IP shall be assigned to
+            </summary>
+        </member>
+        <member name="T:hcloud_api.Models.Requests.FloatingIPs.Actions.ChangeDNSPtrRequest">
+            <summary>
+            Select the IP address for which to change the DNS entry by passing <b>IP</b>. It can be either IPv4 or IPv6. The target hostname is set by passing <b>DNSPointer</b>.
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.Actions.ChangeDNSPtrRequest.DNSPointer">
+            <summary>
+            Hostname to set as a reverse DNS PTR entry
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.Actions.ChangeDNSPtrRequest.IP">
+            <summary>
+            Public IP address for which the reverse DNS entry should be set
+            </summary>
+        </member>
+        <member name="T:hcloud_api.Models.Requests.FloatingIPs.Actions.ChangeProtectionRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.FloatingIPs.Actions.ChangeProtectionRequest.Delete">
+            <summary>
+            If true, prevents the Floating IP from being deleted
             </summary>
         </member>
         <member name="P:hcloud_api.Models.Requests.FloatingIPs.CreateFloatingIPRequset.Name">
@@ -2412,6 +2483,75 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:hcloud_api.Services.Actions.IFirewallActionsService">
+            <summary>
+            Firewall actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFirewallActionsService.ApplyToResources(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.ApplyToResourcesRequest)">
+            <summary>
+            Applies one Firewall to multiple resources.<br/>
+            Currently servers (public network interface) and label selectors are supported.
+            </summary>
+            <param name="firewallId">ID of the Firewall</param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFirewallActionsService.RemoveFromResources(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.RemoveFromResourcesRequest)">
+            <summary>
+            Removes one Firewall from multiple resources.<br/>
+            Currently only Servers (and their public network interfaces) are supported.
+            </summary>
+            <param name="firewallId"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFirewallActionsService.SetRules(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.SetRulesRequest)">
+            <summary>
+            Sets the rules of a Firewall<br/>
+            All existing rules will be overwritten. Pass an empty rules array to remove all rules. The maximum amount of rules that can be defined is 50.
+            </summary>
+            <param name="firewallId">ID of the Firewall</param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:hcloud_api.Services.Actions.IFloatingIPActionsService">
+            <summary>
+            Floating ip actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFloatingIPActionsService.Assign(System.Int32,System.Int32)">
+            <summary>
+            Assigns a Floating IP to a Server.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <param name="serverId">ID of the Server the Floating IP shall be assigned to</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFloatingIPActionsService.ChangeDNSPointer(System.Int32,System.String,System.String)">
+            <summary>
+            Changes the hostname that will appear when getting the hostname belonging to this Floating IP.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <param name="ip">IP address for which to set the reverse DNS entry</param>
+            <param name="dnsPtr">Hostname to set as a reverse DNS PTR entry, will reset to original default value if <b>null</b></param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFloatingIPActionsService.ChangeProtection(System.Int32,System.Boolean)">
+            <summary>
+            Changes the protection configuration of the Floating IP.
+            </summary>
+            <param name="id"></param>
+            <param name="delete">If true, prevents the Floating IP from being deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IFloatingIPActionsService.Unassign(System.Int32)">
+            <summary>
+            Unassigns a Floating IP, resulting in it being unreachable. You may assign it to a Server again at a later time.
+            </summary>
+            <param name="id">ID of the Floating IP</param>
+            <returns></returns>
+        </member>
         <member name="T:hcloud_api.Services.Actions.ILoadBalancerActionsService">
             <summary>
             Load Balancers actions
@@ -2597,6 +2737,55 @@
             <inheritdoc />
         </member>
         <member name="M:hcloud_api.Services.Actions.Impl.CertificateActionsService.RetryIssuanceOrRenewal(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:hcloud_api.Services.Actions.Impl.FirewallActionsService">
+            <summary>
+            Implementation of firewall actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FirewallActionsService.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="P:hcloud_api.Services.Actions.Impl.FirewallActionsService.BasePath">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FirewallActionsService.ApplyToResources(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.ApplyToResourcesRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FirewallActionsService.RemoveFromResources(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.RemoveFromResourcesRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FirewallActionsService.SetRules(System.Int32,hcloud_api.Models.Requests.Firewalls.Actions.SetRulesRequest)">
+            <inheritdoc />
+        </member>
+        <member name="T:hcloud_api.Services.Actions.Impl.FloatingIPActionsService">
+            <summary>
+            Implementation of floating ip actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="P:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.BasePath">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.Assign(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.ChangeDNSPointer(System.Int32,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.ChangeProtection(System.Int32,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.Unassign(System.Int32)">
             <inheritdoc />
         </member>
         <member name="T:hcloud_api.Services.Actions.Impl.LoadBalancerActionsService">

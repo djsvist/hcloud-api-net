@@ -26,21 +26,26 @@ namespace hcloud_api.Services.Actions.Impl
         /// <inheritdoc />
         public async Task<HAction[]> ApplyToResources(int firewallId, ApplyToResourcesRequest request)
         {
-            var result = await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/apply_to_resources", request);
+            var result =
+                await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/apply_to_resources",
+                    request);
             return result.Actions;
         }
 
         /// <inheritdoc />
         public async Task<HAction[]> RemoveFromResources(int firewallId, RemoveFromResourcesRequest request)
         {
-            var result = await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/remove_from_resources", request);
+            var result =
+                await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/remove_from_resources",
+                    request);
             return result.Actions;
         }
 
         /// <inheritdoc />
         public async Task<HAction[]> SetRules(int firewallId, SetRulesRequest request)
         {
-            var result = await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/set_rules", request);
+            var result =
+                await client.PostJsonAsync<ActionsResponse>($"{BasePath}/{firewallId}/actions/set_rules", request);
             return result.Actions;
         }
     }

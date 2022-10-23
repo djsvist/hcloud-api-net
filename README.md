@@ -13,6 +13,8 @@ Actions implemented for the following objects:
 `Servers`
 `Volumes`
 `LoadBalancers`
+`Floating IPs`
+`Firewalls`
 
 ## Installation
 
@@ -31,6 +33,7 @@ You can use parameter object, id or name on creating request
 
 ```C#
 using hcloud_api.Services;
+using hcloud_api.Services.Actions;
 
 private readonly IHCloudService service;
 
@@ -39,6 +42,8 @@ private readonly ILoadBalancerActionsService lbActions;
 private readonly INetworkActionsService networkActions;
 private readonly ISertificateActionsService sertificateActions;
 private readonly IVolumeActionsService volumeActions;
+private readonly IFirewallActionsService firewallActions;
+private readonly IFloatingIPActionsService fIpActions;
 
 var serverTypes = await service.GetServerTypes(name: "cx11");
 
