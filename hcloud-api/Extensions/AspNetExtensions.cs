@@ -32,6 +32,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddHttpClient<IVolumeActionsService, VolumeActionsService>(clientName);
             services.AddHttpClient<INetworkActionsService, NetworkActionsService>(clientName);
             services.AddHttpClient<ILoadBalancerActionsService, LoadBalancerActionsService>(clientName);
+            services.AddHttpClient<IFirewallActionsService, FirewallActionsService>(clientName);
 
             return services;
         }

@@ -27,7 +27,10 @@ namespace hcloud_api.Models.Requests.Firewalls
         [JsonProperty("rules")]
         public Rule[] Rules { get; set; }
 
+        /// <summary>
+        /// Resources the Firewall should be applied to
+        /// </summary>
         [JsonProperty("apply_to")]
-        public AppliedObject[] ApplyTo { get; set; }
+        public IEnumerable<FirewallResourceSelector> ApplyTo { get; set; }
     }
 }
