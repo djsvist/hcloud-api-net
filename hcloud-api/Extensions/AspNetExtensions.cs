@@ -35,6 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddHttpClient<IFirewallActionsService, FirewallActionsService>(clientName);
             services.AddHttpClient<IFloatingIPActionsService, FloatingIPActionsService>(clientName);
             services.AddHttpClient<IImageActionsService, ImageActionsService>(clientName);
+            services.AddHttpClient<IPrimaryIPActionsService, PrimaryIPActionsService>(clientName);
 
             return services;
         }

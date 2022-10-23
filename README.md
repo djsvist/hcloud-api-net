@@ -4,18 +4,7 @@ A .net library for the Hetzner Cloud API
 ## Warning
 __The package is under development__
 
-At the moment, all CRUD operations (where possible) are implemented.
-
-Actions implemented for the following objects:
-
-`Networks`
-`Certificates`
-`Servers`
-`Volumes`
-`LoadBalancers`
-`Floating IPs`
-`Firewalls`
-`Images`
+At the moment, all CRUD operations (where possible) and actions are implemented.
 
 ## Installation
 
@@ -46,6 +35,7 @@ private readonly IVolumeActionsService volumeActions;
 private readonly IFirewallActionsService firewallActions;
 private readonly IFloatingIPActionsService fIpActions;
 private readonly IImageActionsService imageActions;
+private readonly IPrimaryIPActionsService pIpActions;
 
 var serverTypes = await service.GetServerTypes(name: "cx11");
 
