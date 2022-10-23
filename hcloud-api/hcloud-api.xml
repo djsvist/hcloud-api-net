@@ -1578,6 +1578,16 @@
             User-defined labels (key-value pairs)
             </summary>
         </member>
+        <member name="T:hcloud_api.Models.Requests.Images.Actions.ChangeProtectionRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:hcloud_api.Models.Requests.Images.Actions.ChangeProtectionRequest.Delete">
+            <summary>
+            If true, prevents the snapshot from being deleted
+            </summary>
+        </member>
         <member name="P:hcloud_api.Models.Requests.Images.UpdateImageRequest.Description">
             <summary>
             New description of Image
@@ -2552,6 +2562,19 @@
             <param name="id">ID of the Floating IP</param>
             <returns></returns>
         </member>
+        <member name="T:hcloud_api.Services.Actions.IImageActionsService">
+            <summary>
+            Image actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.IImageActionsService.ChangeProtection(System.Int32,System.Boolean)">
+            <summary>
+            Changes the protection configuration of the Image. Can only be used on snapshots.
+            </summary>
+            <param name="imageId">ID of the Image</param>
+            <param name="delete">If true, prevents the snapshot from being deleted</param>
+            <returns></returns>
+        </member>
         <member name="T:hcloud_api.Services.Actions.ILoadBalancerActionsService">
             <summary>
             Load Balancers actions
@@ -2786,6 +2809,23 @@
             <inheritdoc />
         </member>
         <member name="M:hcloud_api.Services.Actions.Impl.FloatingIPActionsService.Unassign(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:hcloud_api.Services.Actions.Impl.ImageActionsService">
+            <summary>
+            Implementation of image actions
+            </summary>
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.ImageActionsService.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="P:hcloud_api.Services.Actions.Impl.ImageActionsService.BasePath">
+            <inheritdoc />
+        </member>
+        <member name="M:hcloud_api.Services.Actions.Impl.ImageActionsService.ChangeProtection(System.Int32,System.Boolean)">
             <inheritdoc />
         </member>
         <member name="T:hcloud_api.Services.Actions.Impl.LoadBalancerActionsService">

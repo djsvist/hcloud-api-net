@@ -15,6 +15,7 @@ Actions implemented for the following objects:
 `LoadBalancers`
 `Floating IPs`
 `Firewalls`
+`Images`
 
 ## Installation
 
@@ -44,6 +45,7 @@ private readonly ISertificateActionsService sertificateActions;
 private readonly IVolumeActionsService volumeActions;
 private readonly IFirewallActionsService firewallActions;
 private readonly IFloatingIPActionsService fIpActions;
+private readonly IImageActionsService imageActions;
 
 var serverTypes = await service.GetServerTypes(name: "cx11");
 
