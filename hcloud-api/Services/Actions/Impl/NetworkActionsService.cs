@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace hcloud_api.Services.Actions.Impl
 {
     /// <summary>
-    /// 
+    /// Implementation of network actions
     /// </summary>
     public class NetworkActionsService : ActionsService, INetworkActionsService
     {

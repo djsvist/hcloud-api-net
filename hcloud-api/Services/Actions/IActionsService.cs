@@ -3,9 +3,13 @@ using hcloud_api.Models.Objects.Actions;
 using hcloud_api.Models.Requests.Actions;
 using hcloud_api.Models.Responses;
 using System.Threading.Tasks;
+// ReSharper disable UnusedMember.Global
 
 namespace hcloud_api.Services.Actions
 {
+    /// <summary>
+    /// Base actions service
+    /// </summary>
     public interface IActionsService
     {
         /// <summary>

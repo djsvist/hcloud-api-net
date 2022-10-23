@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace hcloud_api.Services.Actions
 {
     /// <summary>
-    /// 
+    /// Load Balancers actions
     /// </summary>
     public interface ILoadBalancerActionsService : IActionsService
     {

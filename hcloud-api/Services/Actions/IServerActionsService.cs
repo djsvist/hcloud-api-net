@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions
 {
+    /// <summary>
+    /// Server actions
+    /// </summary>
     public interface IServerActionsService : IActionsService
     {
         /// <summary>

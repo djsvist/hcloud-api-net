@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 namespace hcloud_api.Services.Actions
 {
     /// <summary>
-    /// 
+    /// Network actions
     /// </summary>
-    public interface INetworkActionsService
+    public interface INetworkActionsService : IActionsService
     {
         /// <summary>
         /// Adds a route entry to a Network.<br/>

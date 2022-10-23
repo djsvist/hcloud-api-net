@@ -3,7 +3,10 @@ using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions
 {
-    public interface ISertificateActionsService : IActionsService
+    /// <summary>
+    /// Certificate actions
+    /// </summary>
+    public interface ICertificateActionsService : IActionsService
     {
         /// <summary>
         /// Retry a failed Certificate issuance or renewal.

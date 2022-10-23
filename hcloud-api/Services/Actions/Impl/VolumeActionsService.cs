@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace hcloud_api.Services.Actions.Impl
 {
     /// <summary>
-    /// 
+    /// Implementation of volume actions
     /// </summary>
     public class VolumeActionsService : ActionsService, IVolumeActionsService
     {

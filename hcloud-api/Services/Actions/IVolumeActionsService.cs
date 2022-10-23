@@ -3,7 +3,10 @@ using System.Threading.Tasks;
 
 namespace hcloud_api.Services.Actions
 {
-    public interface IVolumeActionsService
+    /// <summary>
+    /// Volume actions
+    /// </summary>
+    public interface IVolumeActionsService : IActionsService
     {
         /// <summary>
         /// Attaches a Volume to a Server. Works only if the Server is in the same Location as the Volume.

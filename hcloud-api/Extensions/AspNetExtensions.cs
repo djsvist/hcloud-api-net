@@ -28,7 +28,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddHttpClient<IHCloudService, HCloudService>(clientName);
             services.AddHttpClient<IServerActionsService, ServerActionsService>(clientName);
-            services.AddHttpClient<ISertificateActionsService, SertificateActionsService>(clientName);
+            services.AddHttpClient<ICertificateActionsService, CertificateActionsService>(clientName);
             services.AddHttpClient<IVolumeActionsService, VolumeActionsService>(clientName);
             services.AddHttpClient<INetworkActionsService, NetworkActionsService>(clientName);
             services.AddHttpClient<ILoadBalancerActionsService, LoadBalancerActionsService>(clientName);
