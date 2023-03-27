@@ -6,21 +6,69 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>hcloud-api-net</PackageId>
     <Authors>DJSvist</Authors>
-    <Version>0.1.6</Version>
+    <Version>0.1.8</Version>
     <PackageProjectUrl>https://github.com/djsvist/hcloud-api-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/djsvist/hcloud-api-net</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Hetzner Cloud API implementation for .net</Description>
     <PackageTags>hetzner</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Projects\CSharp\hcloud-api-net\hcloud-api\hcloud-api.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Projects\CSharp\hcloud-api-net\hcloud-api\hcloud-api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Objects\FloatingIPs\**" />
+    <EmbeddedResource Remove="Models\Objects\FloatingIPs\**" />
+    <None Remove="Models\Objects\FloatingIPs\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Models\Objects\Certificates\" />
+    <None Remove="Models\Requests\Certificates\" />
+    <None Remove="Models\Responses\Certificates\" />
+    <None Remove="Models\Requests\SSHKeys\" />
+    <None Remove="Models\Responses\SSHKeys\" />
+    <None Remove="Models\Objects\PlacementGroups\" />
+    <None Remove="Models\Requests\PlacementGroups\" />
+    <None Remove="Models\Responses\PlacementGroups\" />
+    <None Remove="Models\Objects\FloatingIPs\" />
+    <None Remove="Models\Requests\FloatingIPs\" />
+    <None Remove="Models\Responses\FloatingIPs\" />
+    <None Remove="Services\Actions\" />
+    <None Remove="Models\Responses\Servers\Actions\" />
+    <None Remove="Models\Requests\Servers\Actions\" />
+    <None Remove="Models\Requests\Actions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Objects\Certificates\" />
+    <Folder Include="Models\Requests\Certificates\" />
+    <Folder Include="Models\Responses\Certificates\" />
+    <Folder Include="Models\Requests\SSHKeys\" />
+    <Folder Include="Models\Responses\SSHKeys\" />
+    <Folder Include="Models\Objects\PlacementGroups\" />
+    <Folder Include="Models\Requests\PlacementGroups\" />
+    <Folder Include="Models\Responses\PlacementGroups\" />
+    <Folder Include="Models\Responses\FloatingIPs\" />
+    <Folder Include="Models\Responses\Servers\Actions\" />
+    <Folder Include="Models\Requests\Servers\Actions\" />
+    <Folder Include="Models\Requests\Actions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>

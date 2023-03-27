@@ -21,20 +21,5 @@ namespace hcloud_api.Models.Objects.Shared
         /// </summary>
         [JsonProperty("price_monthly")]
         public PriceDetail Monthly { get; set; }
-
-        public class PriceDetail
-        {
-            /// <summary>
-            /// Price with VAT added
-            /// </summary>
-            [JsonProperty("gross")]
-            public string Gross { get; set; }
-
-            /// <summary>
-            /// Price without VAT
-            /// </summary>
-            [JsonProperty("net")]
-            public string Net { get; set; }
-        }
     }
 }

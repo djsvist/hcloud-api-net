@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace hcloud_api.Models.Objects.LoadBalancers.HealthChecks
 {
+    /// <summary>
+    /// Additional configuration for protocol http
+    /// </summary>
     public class HealthCheckHttpCfg
     {
         /// <summary>

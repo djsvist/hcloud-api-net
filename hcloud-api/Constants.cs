@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace hcloud_api
+﻿namespace hcloud_api
 {
     public static class Constants
     {
