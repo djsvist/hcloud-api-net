@@ -4,6 +4,8 @@ A .net library for the Hetzner Cloud API
 ## Warning
 __The package is under development__
 
+__Please test the methods you use before using them in production. I don't have access Htezner account and can't test the api.__
+
 At the moment, all CRUD operations (where possible) and actions are implemented.
 
 ## Installation
